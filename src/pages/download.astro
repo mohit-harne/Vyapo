@@ -1,0 +1,201 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MagneticButton from '../components/MagneticButton.jsx';
+
+// Active Mobile Stores
+const activePlatforms = [
+  {
+    os: 'Android',
+    store: 'Google Play',
+    tag: 'Live v2.4.0',
+    specs: 'Android 8.0+ • APK / Bundle',
+    href: 'https://play.google.com/store/apps/details?id=com.vyapo.app&hl=en_IN',
+    glowColor: 'rgba(0, 211, 255, 0.22)',
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg',
+    cta: 'Get on Google Play',
+  },
+  {
+    os: 'iOS / iPadOS',
+    store: 'App Store',
+    tag: 'Live v2.4.0',
+    specs: 'iOS 15.0+ • iPhone & iPad',
+    href: '#',
+    glowColor: 'rgba(0, 122, 255, 0.25)',
+    icon: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/app-store.svg',
+    cta: 'Download on App Store',
+  }
+];
+
+// Upcoming Workstation Platforms
+const upcomingPlatforms = [
+  {
+    os: 'macOS',
+    store: 'Desktop App',
+    tag: 'Q3 2026',
+    specs: 'Apple Silicon & Intel • .dmg',
+    svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><rect width="100" height="100" rx="22" fill="#1C82E8"/><path fill="#64B5F6" d="M50 0C77.6 0 100 22.4 100 50v50H50C22.4 100 0 77.6 0 50S22.4 0 50 0z"/><path fill="#1565C0" d="M50 18c-3 0-5 2-5 5v26c0 1.5.5 3 2 4l3 3 3-3c1.5-1 2-2.5 2-4V23c0-3-2-5-5-5z"/><circle cx="32" cy="38" r="5" fill="#FFFFFF"/><circle cx="68" cy="38" r="5" fill="#FFFFFF"/><path fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" d="M30 64c6 8 13 12 20 12s14-4 20-12"/></svg>`
+  },
+  {
+    os: 'Windows',
+    store: 'Merchant POS',
+    tag: 'Q4 2026',
+    specs: 'Windows 10 / 11 • x64 & ARM',
+    svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><rect x="4" y="4" width="43" height="43" rx="4" fill="#0078D4"/><rect x="53" y="4" width="43" height="43" rx="4" fill="#0078D4"/><rect x="4" y="53" width="43" height="43" rx="4" fill="#0078D4"/><rect x="53" y="53" width="43" height="43" rx="4" fill="#0078D4"/></svg>`
+  },
+  {
+    os: 'Linux',
+    store: 'Warehouse Terminal',
+    tag: 'Q4 2026',
+    specs: 'Ubuntu / Debian • Flatpak',
+    svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><ellipse cx="50" cy="58" rx="26" ry="32" fill="#212121"/><ellipse cx="50" cy="62" rx="18" ry="24" fill="#FFFFFF"/><circle cx="50" cy="28" r="18" fill="#212121"/><ellipse cx="44" cy="24" rx="4" ry="7" fill="#FFFFFF"/><ellipse cx="56" cy="24" rx="4" ry="7" fill="#FFFFFF"/><circle cx="45" cy="26" r="2.5" fill="#000000"/><circle cx="55" cy="26" r="2.5" fill="#000000"/><path fill="#FFA000" d="M42 32h16l-8 12z"/><ellipse cx="32" cy="90" rx="14" ry="6" fill="#FFB300"/><ellipse cx="68" cy="90" rx="14" ry="6" fill="#FFB300"/></svg>`
+  },
+  {
+    os: 'Web Cloud',
+    store: 'Browser POS',
+    tag: 'Q1 2027',
+    specs: 'PWA • Instant Barcode Sync',
+    svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><circle cx="50" cy="50" r="46" fill="#FFFFFF"/><path fill="#EA4335" d="M50 4a46 46 0 0 1 43.8 32H50l14.2 24.6L34.6 30.8A46 46 0 0 1 50 4z"/><path fill="#4CAF50" d="M93.8 36A46 46 0 0 1 23 88l27-46.8 14.2 24.6L44 87.8A46 46 0 0 0 93.8 36z"/><path fill="#FBBC05" d="M23 88A46 46 0 0 1 6.2 36h52L31.2 82.2 23 88z"/><circle cx="50" cy="50" r="20" fill="#FFFFFF"/><circle cx="50" cy="50" r="16" fill="#1A73E8"/></svg>`
+  }
+];
+---
+
+<Layout title="Download Vyapo | Multi-Platform Merchant Network">
+  <!-- Added w-full max-w-full overflow-x-clip to isolate layout bounds -->
+  <div class="relative w-full max-w-full overflow-x-clip bg-transparent text-white selection:bg-vyapo selection:text-black">
+    
+    <!-- Contained Background Ambient Glow Nodes -->
+    <div class="absolute -top-32 right-0 w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] bg-vyapo/10 rounded-full blur-[110px] pointer-events-none mix-blend-screen -z-10"></div>
+    <div class="absolute top-1/2 left-0 w-[260px] sm:w-[380px] h-[260px] sm:h-[380px] bg-amber-500/10 rounded-full blur-[110px] pointer-events-none mix-blend-screen -z-10"></div>
+
+    <section class="w-full max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-28 pb-20 relative z-10 box-border">
+      
+      <!-- COMPACT HEADER -->
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[11px] uppercase tracking-[0.25em] text-vyapo mb-4 header-elem">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Universal Merchant Suite
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-[0.95] header-elem">
+          Vyapo on <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-vyapo">
+            Every Device.
+          </span>
+        </h1>
+        <p class="text-white/60 text-sm sm:text-base font-light mt-4 header-elem">
+          Sync wholesale inventory, dispatch shipments, and settle retail payments from a unified terminal.
+        </p>
+      </div>
+
+      <!-- SECTION 1: ACTIVE MOBILE HUBS -->
+      <div class="mb-12 sm:mb-14">
+        <div class="flex items-center justify-between mb-4 sm:mb-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-vyapo flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Available Now
+          </span>
+          <span class="text-[11px] font-mono text-white/40">Direct Store Deployment</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 live-cards-grid">
+          {activePlatforms.map((p) => (
+            <div class="live-download-card relative rounded-2xl bg-white/[0.03] border border-white/10 p-5 sm:p-6 backdrop-blur-md overflow-hidden group hover:border-white/30 transition-all duration-300 flex flex-col justify-between box-border">
+              
+              <div 
+                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={`background: radial-gradient(circle at 80% 20%, ${p.glowColor} 0%, transparent 60%);`}
+              ></div>
+
+              <div class="relative z-10 flex items-start justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3 min-w-0">
+                  <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/[0.04] border border-white/10 p-2 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <img src={p.icon} alt={p.os} class="w-full h-full object-contain pointer-events-none" loading="lazy" />
+                  </div>
+                  <div class="min-w-0">
+                    <h3 class="text-lg sm:text-xl font-bold uppercase tracking-tight text-white leading-tight truncate">{p.os}</h3>
+                    <p class="font-mono text-[10px] sm:text-[11px] text-white/40 truncate">{p.specs}</p>
+                  </div>
+                </div>
+
+                <span class="font-mono text-[9px] sm:text-[10px] text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full flex-shrink-0">
+                  {p.tag}
+                </span>
+              </div>
+
+              <!-- Button CTA -->
+              <div class="relative z-10 pt-3 border-t border-white/5">
+                <MagneticButton client:load href={p.href} className="cursor-none block w-full">
+                  <div class="w-full py-2.5 px-4 rounded-xl bg-white/[0.04] hover:bg-white text-white hover:text-black font-bold uppercase text-[10px] sm:text-[11px] tracking-[0.18em] transition-all duration-300 flex items-center justify-between group/btn border border-white/10 hover:border-white">
+                    <span>{p.cta}</span>
+                    <span class="transform group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </MagneticButton>
+              </div>
+
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- SECTION 2: WORKSTATION ROADMAP -->
+      <div>
+        <div class="flex items-center justify-between mb-4 sm:mb-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-white/50">
+            Workstation Roadmap
+          </span>
+          <span class="text-[11px] font-mono text-white/40">In Architecture & QA</span>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 upcoming-grid">
+          {upcomingPlatforms.map((up) => (
+            <div class="upcoming-card rounded-2xl bg-white/[0.02] border border-white/10 p-3.5 sm:p-4 flex flex-col justify-between backdrop-blur-sm group hover:border-white/20 transition-all duration-300 min-h-[130px] sm:min-h-[140px] box-border">
+              
+              <div class="flex items-start justify-between mb-3">
+                <div class="w-8 h-8 rounded-xl bg-white/[0.04] border border-white/5 p-1.5 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-sm flex-shrink-0">
+                  <div class="w-full h-full flex items-center justify-center" set:html={up.svg} />
+                </div>
+                
+                <span class="font-mono text-[9px] sm:text-[10px] text-vyapo bg-vyapo/10 border border-vyapo/20 px-1.5 sm:px-2 py-0.5 rounded-full flex-shrink-0">
+                  {up.tag}
+                </span>
+              </div>
+
+              <div class="min-w-0">
+                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wide text-white truncate">{up.os}</h4>
+                <p class="text-[10px] sm:text-[11px] font-mono text-white/40 truncate mt-0.5">{up.specs}</p>
+              </div>
+
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </section>
+  </div>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const initDownloadMotion = () => {
+    gsap.fromTo(
+      '.header-elem',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.1 }
+    );
+
+    gsap.fromTo(
+      '.live-download-card',
+      { y: 35, opacity: 0, scale: 0.98 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.8, stagger: 0.15, ease: 'back.out(1.1)', delay: 0.25 }
+    );
+
+    gsap.fromTo(
+      '.upcoming-card',
+      { y: 25, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power2.out', delay: 0.4 }
+    );
+  };
+
+  document.addEventListener('DOMContentLoaded', initDownloadMotion);
+  document.addEventListener('astro:page-load', initDownloadMotion);
+</script>

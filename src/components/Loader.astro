@@ -1,0 +1,116 @@
+---
+// src/components/Loader.astro
+---
+
+<div id="vyapo-loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
+  <!-- Split Curtains (No borders, 0.5% overlap to kill sub-pixel seam) -->
+  <div class="loader-bg-top absolute top-0 left-0 w-full h-[51%] bg-[#0a0a0a] pointer-events-none will-change-transform"></div>
+  <div class="loader-bg-bottom absolute bottom-0 left-0 w-full h-[51%] bg-[#0a0a0a] pointer-events-none will-change-transform"></div>
+
+  <!-- Center Content Container -->
+  <div class="loader-content relative z-10 flex flex-col items-center justify-center pointer-events-none">
+    
+    <!-- Logo with ambient glow -->
+    <div class="relative flex items-center justify-center mb-8">
+      <div class="loader-glow absolute w-32 h-32 rounded-full bg-vyapo/20 blur-2xl"></div>
+      <img 
+        src="/vyapo.png" 
+        alt="Vyapo Loading" 
+        class="loader-logo relative z-10 h-16 w-auto object-contain drop-shadow-[0_0_25px_rgba(245,158,11,0.45)]"
+      />
+    </div>
+
+    <!-- Progress Track & Bar -->
+    <div class="w-48 h-[2px] bg-white/10 rounded-full overflow-hidden relative mb-4">
+      <div class="loader-bar absolute top-0 left-0 h-full w-full bg-vyapo origin-left scale-x-0"></div>
+    </div>
+
+    <!-- Metadata Counter -->
+    <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-white/50">
+      <span>Initializing</span>
+      <span class="loader-counter text-vyapo font-bold">0%</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const runLoader = () => {
+    const loader = document.getElementById('vyapo-loader');
+    if (!loader) return;
+
+    document.body.style.overflow = 'hidden';
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        document.body.style.overflow = '';
+        loader.style.pointerEvents = 'none';
+        loader.style.display = 'none';
+      }
+    });
+
+    gsap.set(['.loader-bg-top', '.loader-bg-bottom'], { yPercent: 0 });
+    gsap.set('.loader-logo', { scale: 0.85, opacity: 0 });
+    gsap.set('.loader-bar', { scaleX: 0 });
+
+    const progress = { value: 0 };
+    const counterEl = document.querySelector('.loader-counter');
+
+    tl.to('.loader-logo', {
+      scale: 1,
+      opacity: 1,
+      duration: 0.6,
+      ease: 'back.out(1.7)'
+    })
+    .to('.loader-glow', {
+      scale: 1.3,
+      opacity: 0.8,
+      duration: 0.8,
+      repeat: 1,
+      yoyo: true,
+      ease: 'sine.inOut'
+    }, '-=0.4')
+    .to(progress, {
+      value: 100,
+      duration: 1.2,
+      ease: 'power2.inOut',
+      onUpdate: () => {
+        if (counterEl) {
+          counterEl.textContent = `${Math.round(progress.value)}%`;
+        }
+      }
+    }, '-=0.6')
+    .to('.loader-bar', {
+      scaleX: 1,
+      duration: 1.2,
+      ease: 'power2.inOut'
+    }, '<')
+    .to('.loader-content', {
+      y: -20,
+      opacity: 0,
+      duration: 0.4,
+      ease: 'power2.in'
+    }, '+=0.1')
+    .to('.loader-bg-top', {
+      yPercent: -101,
+      duration: 0.8,
+      ease: 'power4.inOut'
+    })
+    .to('.loader-bg-bottom', {
+      yPercent: 101,
+      duration: 0.8,
+      ease: 'power4.inOut'
+    }, '<');
+  };
+
+  if (document.readyState === 'complete') {
+    runLoader();
+  } else {
+    window.addEventListener('load', runLoader);
+  }
+
+  document.addEventListener('astro:before-preparation', () => {
+    document.body.style.overflow = '';
+  });
+</script>

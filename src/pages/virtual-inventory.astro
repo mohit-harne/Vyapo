@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HorizontalScroll from '../components/HorizontalScroll.jsx';
+import TextReveal from '../components/TextReveal.jsx';
+import MagneticButton from '../components/MagneticButton.jsx';
+---
+
+<Layout title="Virtual Inventory">
+  <!-- Hero Section -->
+  <section class="min-h-[70vh] pt-32 md:pt-40 px-6 max-w-7xl mx-auto flex flex-col justify-center">
+    <TextReveal client:load>
+      <h1 class="text-5xl md:text-[8vw] leading-[0.9] font-black uppercase tracking-tighter">
+        Virtual <br/>
+        <span class="text-transparent [-webkit-text-stroke:1px_#F59E0B] md:[-webkit-text-stroke:2px_#F59E0B]">Inventory.</span>
+      </h1>
+      <p class="text-xl md:text-3xl text-white/60 max-w-3xl mt-8 md:mt-12 font-light leading-relaxed">
+        Virtual inventory is nothing but the complete information which is needed to describe and explain the product[cite: 2].
+      </p>
+    </TextReveal>
+  </section>
+
+  <!-- Horizontal Scroll Timeline (Responsive Stacking for Mobile) -->
+  <HorizontalScroll client:load>
+    <div class="w-full md:w-[60vw] lg:w-[50vw] flex-shrink-0 pt-12 md:pt-0">
+      <p class="text-vyapo tracking-widest uppercase text-xs md:text-sm mb-4 md:mb-6">Phase 01</p>
+      <h2 class="text-4xl md:text-6xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white">Creation.</h2>
+      <p class="text-lg md:text-2xl text-white/50 leading-relaxed max-w-xl font-light">
+        Our virtual inventory system allows manufacturers to create and manage virtual inventory, providing a real-time view of available products[cite: 2].
+      </p>
+    </div>
+    
+    <div class="w-full md:w-[60vw] lg:w-[50vw] flex-shrink-0 pt-12 md:pt-0">
+      <p class="text-vyapo tracking-widest uppercase text-xs md:text-sm mb-4 md:mb-6">Phase 02</p>
+      <h2 class="text-4xl md:text-6xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white">Transfer.</h2>
+      <p class="text-lg md:text-2xl text-white/50 leading-relaxed max-w-xl font-light">
+        Vyapo enables the seamless transfer of inventory from the manufacturer to the wholesaler and subsequently to the retailer, ensuring transparency, efficiency, and traceability[cite: 2].
+      </p>
+    </div>
+    
+    <div class="w-full md:w-[60vw] lg:w-[50vw] flex-shrink-0 pt-12 md:pt-0">
+      <p class="text-vyapo tracking-widest uppercase text-xs md:text-sm mb-4 md:mb-6">Phase 03</p>
+      <h2 class="text-4xl md:text-6xl font-bold mb-4 md:mb-6 uppercase tracking-tighter text-white">Empowerment.</h2>
+      <p class="text-lg md:text-2xl text-white/50 leading-relaxed max-w-xl font-light">
+        We empower retailers by providing access to comprehensive and up-to-date inventory, enabling seamless integration of virtual inventory with the sales process for efficient customer service[cite: 2].
+      </p>
+    </div>
+  </HorizontalScroll>
+
+  <!-- Physical Stock Integration Section -->
+  <section class="py-24 md:py-40 px-6 max-w-7xl mx-auto border-t border-white/5">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <TextReveal client:load>
+        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 text-white">
+          Physical Stock <br/> Meets <span class="text-vyapo">Virtual.</span>
+        </h2>
+        <p class="text-lg md:text-2xl text-white/60 font-light leading-relaxed mb-10">
+          We provide comprehensive management of the product journey, facilitating the systematic transfer of virtual inventory created by the manufacturer alongside physical stock to wholesalers and retailers[cite: 2].
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6">
+          <div class="p-8 border border-white/10 rounded-3xl bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-500 relative group overflow-hidden">
+            <div class="absolute inset-0 bg-vyapo/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <h4 class="text-xl font-bold mb-3 text-white uppercase tracking-wider relative z-10">Real-Time Sync</h4>
+            <p class="text-white/50 text-sm leading-relaxed relative z-10">Instant visibility of available products seamlessly transferred across the network[cite: 2].</p>
+          </div>
+          <div class="p-8 border border-white/10 rounded-3xl bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-500 relative group overflow-hidden">
+            <div class="absolute inset-0 bg-vyapo/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <h4 class="text-xl font-bold mb-3 text-white uppercase tracking-wider relative z-10">Traceability</h4>
+            <p class="text-white/50 text-sm leading-relaxed relative z-10">Ensure complete transparency, cost-effectiveness, and efficiency at every single step[cite: 2].</p>
+          </div>
+        </div>
+      </TextReveal>
+      
+      <div class="flex justify-center lg:justify-end mt-12 lg:mt-0">
+        <TextReveal client:load>
+          <MagneticButton client:load href="/network" className="cursor-none">
+            <div class="w-48 h-48 md:w-64 md:h-64 rounded-full border border-white/20 flex flex-col items-center justify-center group-hover:bg-vyapo group-hover:border-vyapo transition-all duration-500 group relative">
+              <span class="text-sm uppercase tracking-[0.2em] text-white group-hover:text-[#0a0a0a] font-bold z-10 transition-colors">See the Network</span>
+              <div class="absolute w-full h-full rounded-full bg-vyapo scale-0 group-hover:scale-100 transition-transform duration-500 ease-out z-0"></div>
+            </div>
+          </MagneticButton>
+        </TextReveal>
+      </div>
+    </div>
+  </section>
+</Layout>

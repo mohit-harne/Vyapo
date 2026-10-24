@@ -1,0 +1,352 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const features = [
+  {
+    id: "01",
+    tag: "Real-Time Tracking",
+    title: "Dual-Layer Ledger",
+    summary: "Track physical freight units via IoT GPS sensors and digital legal title via distributed cloud ledgers simultaneously. Eliminates ghost inventories, unverified claims, and shipment shrinkage across state check-posts.",
+    metricLabel: "Active In-Transit Nodes",
+    metricValue: "14,820",
+    statusText: "GPS Telematics: Calibrated",
+    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=80",
+    imageAlt: "Indian National Highway Logistics Container Fleet in Transit"
+  },
+  {
+    id: "02",
+    tag: "Liquidity & Capital",
+    title: "Automated Invoice Discounting",
+    summary: "Convert rolling freight into immediate working capital. Verified wholesalers unlock instant non-recourse advances via partner NBFC underwriting engines the exact moment an e-way bill is counter-signed.",
+    metricLabel: "Programmatic Credit Liquidity",
+    metricValue: "₹42.5Cr",
+    statusText: "Escrow Protocol: Verified",
+    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=900&q=80",
+    imageAlt: "Indian Wholesale Merchant Kirana Trade Counter and Commercial Distribution"
+  },
+  {
+    id: "03",
+    tag: "Edge Synchronization",
+    title: "Offline-First POS Protocol",
+    summary: "Engineered specifically for Tier-2, Tier-3, and mandi warehouse hubs. POS registers process high-frequency inventory scans without internet, auto-reconciling state via CRDT engines the instant connection restores.",
+    metricLabel: "Offline Conflict Resolution",
+    metricValue: "0.00ms",
+    statusText: "CRDT State Machine: Synced",
+    image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=900&q=80",
+    imageAlt: "Modern Electronic Handheld POS System and Terminal Screen"
+  }
+];
+---
+
+<Layout title="Platform Features | Vyapo">
+  <div class="relative w-full max-w-full overflow-x-clip bg-transparent text-white selection:bg-vyapo selection:text-black">
+    
+    <!-- Ambient Glow Fields -->
+    <div class="absolute -top-28 right-0 w-[280px] sm:w-[420px] h-[280px] sm:h-[420px] bg-vyapo/10 rounded-full blur-[110px] pointer-events-none mix-blend-screen -z-10"></div>
+    <div class="absolute top-1/2 left-0 w-[240px] sm:w-[360px] h-[240px] sm:h-[360px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen -z-10"></div>
+
+    <section class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-40 relative z-10 box-border">
+      
+      <!-- COMPACT HEADER -->
+      <div class="max-w-2xl mb-10 sm:mb-14">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[10px] uppercase tracking-[0.2em] text-vyapo mb-3 features-header-elem">
+          <span class="w-1.5 h-1.5 rounded-full bg-vyapo animate-ping"></span>
+          Core Protocol Capabilities
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-black uppercase tracking-tight leading-tight features-header-elem">
+          Engineered <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-vyapo">
+            For Real-World Trade.
+          </span>
+        </h1>
+        <p class="text-white/60 text-sm sm:text-base font-light mt-3 leading-relaxed features-header-elem">
+          Eliminating physical-digital friction with deterministic state management across India's wholesale and retail supply chain corridors.
+        </p>
+      </div>
+
+      <!-- MAIN INTERACTIVE SECTION -->
+      <div class="features-pinned-container grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start relative pb-24">
+        
+        <!-- LEFT: Fixed Compact HUD Stage -->
+        <div class="hidden lg:block lg:col-span-5 relative stage-column">
+          <div class="pinned-stage-box space-y-3 will-change-transform">
+            
+            <div class="rounded-2xl bg-white/[0.02] border border-white/15 p-3.5 backdrop-blur-xl relative overflow-hidden shadow-2xl">
+              
+              <!-- Monitor Header Bar -->
+              <div class="flex items-center justify-between font-mono text-[10px] pb-2 mb-2.5 border-b border-white/10">
+                <span class="text-vyapo flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  LIVE TELEMETRY STAGE
+                </span>
+                <span id="active-feature-counter" class="text-white/50">NODE 01 / 03</span>
+              </div>
+
+              <!-- Fixed Frame Containing Stacked Images -->
+              <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-black/90 border border-white/10 mb-2.5">
+                
+                {features.map((f, i) => (
+                  <img
+                    src={f.image}
+                    alt={f.imageAlt}
+                    class={`hud-img hud-img-${i} absolute inset-0 w-full h-full object-cover transition-none will-change-[opacity,transform]`}
+                    style={i === 0 ? "opacity: 1; transform: scale(1); z-index: 2;" : "opacity: 0; transform: scale(1.06); z-index: 1;"}
+                    loading="eager"
+                  />
+                ))}
+
+                <!-- Top Vignette Shadow -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none z-10"></div>
+
+                <!-- Laser Scanline -->
+                <div class="laser-scanner absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-vyapo to-transparent opacity-90 pointer-events-none z-20"></div>
+
+                <!-- Bottom Status Pill -->
+                <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between z-20">
+                  <span id="hud-status" class="px-2 py-0.5 rounded-md bg-black/90 backdrop-blur-md border border-white/15 text-[9px] font-mono text-emerald-400">
+                    {features[0].statusText}
+                  </span>
+                  <span class="px-1.5 py-0.5 rounded-md bg-black/80 backdrop-blur-md text-[8px] font-mono uppercase tracking-widest text-white/50">
+                    IN-CORRIDOR
+                  </span>
+                </div>
+              </div>
+
+              <!-- Metric Readout Box -->
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between">
+                <div>
+                  <span id="hud-metric-label" class="block font-mono text-[9px] uppercase tracking-wider text-white/40">
+                    {features[0].metricLabel}
+                  </span>
+                  <span id="hud-metric-val" class="font-mono text-xl font-bold text-vyapo">
+                    {features[0].metricValue}
+                  </span>
+                </div>
+                <div class="w-8 h-8 rounded-lg bg-vyapo/10 border border-vyapo/30 flex items-center justify-center text-vyapo text-xs font-bold">
+                  ⚡
+                </div>
+              </div>
+
+            </div>
+
+            <p class="text-[11px] font-mono text-white/40 px-1 leading-normal">
+              * Verified on-chain via automated e-way bill APIs and encrypted weighbridge telematics.
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT: Scrolling Cards Stack -->
+        <div class="lg:col-span-7 space-y-8 lg:space-y-24 features-list-wrapper">
+          {features.map((item, idx) => (
+            <div 
+              class="feature-card relative rounded-2xl bg-white/[0.02] border border-white/10 p-5 sm:p-7 backdrop-blur-md transition-all duration-300 overflow-hidden flex flex-col justify-between"
+              data-index={idx}
+              data-label={item.metricLabel}
+              data-val={item.metricValue}
+              data-status={item.statusText}
+            >
+              <div class="active-indicator absolute left-0 top-0 bottom-0 w-[2px] bg-vyapo scale-y-0 transition-transform duration-300 origin-top"></div>
+
+              <div>
+                <!-- Mobile Inline Image -->
+                <div class="lg:hidden relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-4 bg-black/50 border border-white/10">
+                  <img 
+                    src={item.image} 
+                    alt={item.imageAlt} 
+                    class="w-full h-full object-cover"
+                    loading="lazy" 
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                  <span class="absolute bottom-2 left-2 font-mono text-[9px] text-emerald-400 bg-black/80 px-2 py-0.5 rounded border border-emerald-400/20">
+                    {item.statusText}
+                  </span>
+                </div>
+
+                <div class="flex items-center justify-between gap-3 mb-2.5">
+                  <span class="font-mono text-[11px] uppercase tracking-wider text-vyapo flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-vyapo"></span>
+                    {item.tag}
+                  </span>
+                  <span class="font-mono text-[11px] text-white/30">{item.id}</span>
+                </div>
+
+                <h2 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-white mb-2.5 leading-snug">
+                  {item.title}
+                </h2>
+
+                <p class="text-xs sm:text-sm text-white/60 font-light leading-relaxed">
+                  {item.summary}
+                </p>
+              </div>
+
+              <div class="pt-4 mt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] sm:text-[11px]">
+                <span class="text-white/40">{item.metricLabel}</span>
+                <span class="text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-400/10 border border-emerald-400/20">
+                  {item.metricValue}
+                </span>
+              </div>
+
+            </div>
+          ))}
+          
+          <!-- Bottom Spacer -->
+          <div class="h-20 lg:h-40 pointer-events-none"></div>
+        </div>
+
+      </div>
+
+    </section>
+  </div>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initFeaturesMotion = () => {
+    // Kill existing triggers to avoid stale caching during hot reload
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+
+    gsap.fromTo(
+      '.features-header-elem',
+      { y: 25, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: 'power3.out', delay: 0.1 }
+    );
+
+    gsap.to('.laser-scanner', {
+      top: '100%',
+      duration: 2.2,
+      repeat: -1,
+      ease: 'power1.inOut',
+      yoyo: true,
+    });
+
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+    const cards = document.querySelectorAll('.feature-card');
+    const images = document.querySelectorAll('.hud-img');
+    const counter = document.getElementById('active-feature-counter');
+    const metricLabel = document.getElementById('hud-metric-label');
+    const metricVal = document.getElementById('hud-metric-val');
+    const statusBadge = document.getElementById('hud-status');
+
+    let currentIndex = 0;
+
+    if (isDesktop) {
+      ScrollTrigger.create({
+        trigger: '.features-pinned-container',
+        start: 'top 100px',
+        end: 'bottom bottom',
+        pin: '.pinned-stage-box',
+        pinSpacing: false,
+      });
+
+      cards.forEach((card, index) => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: index === cards.length - 1 ? 'top 75%' : 'top 55%',
+          end: index === cards.length - 1 ? 'bottom 85%' : 'bottom 45%',
+          onEnter: () => switchFeature(index),
+          onEnterBack: () => switchFeature(index),
+        });
+      });
+
+      function switchFeature(newIndex: number) {
+        if (newIndex === currentIndex && images[newIndex] && (images[newIndex] as HTMLElement).style.opacity === '1') {
+          return;
+        }
+
+        const activeCard = cards[newIndex];
+        if (!activeCard) return;
+
+        // Guaranteed Cross-Fade: Target all images deterministically
+        images.forEach((img, idx) => {
+          const el = img as HTMLElement;
+          if (idx === newIndex) {
+            el.style.zIndex = '5';
+            gsap.to(el, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.45,
+              ease: 'power2.out',
+              overwrite: 'auto'
+            });
+          } else {
+            el.style.zIndex = '1';
+            gsap.to(el, {
+              opacity: 0,
+              scale: 1.05,
+              duration: 0.4,
+              ease: 'power2.in',
+              overwrite: 'auto'
+            });
+          }
+        });
+
+        // Update HUD textual readouts
+        const idxStr = (newIndex + 1).toString().padStart(2, '0');
+        const label = activeCard.getAttribute('data-label') || '';
+        const val = activeCard.getAttribute('data-val') || '';
+        const status = activeCard.getAttribute('data-status') || '';
+
+        if (counter && metricLabel && metricVal && statusBadge) {
+          counter.textContent = `NODE ${idxStr} / 03`;
+          metricLabel.textContent = label;
+          statusBadge.textContent = status;
+
+          gsap.fromTo(
+            metricVal,
+            { scale: 1.1, color: '#FFFFFF' },
+            { textContent: val, scale: 1, color: '#F59E0B', duration: 0.3, ease: 'power2.out' }
+          );
+        }
+
+        // Highlight cards
+        cards.forEach((c, idx) => {
+          const ind = c.querySelector('.active-indicator');
+          if (idx === newIndex) {
+            gsap.to(c, { borderColor: 'rgba(245, 158, 11, 0.4)', backgroundColor: 'rgba(255, 255, 255, 0.04)', duration: 0.35 });
+            if (ind) gsap.to(ind, { scaleY: 1, duration: 0.3 });
+          } else {
+            gsap.to(c, { borderColor: 'rgba(255, 255, 255, 0.1)', backgroundColor: 'rgba(255, 255, 255, 0.02)', duration: 0.35 });
+            if (ind) gsap.to(ind, { scaleY: 0, duration: 0.3 });
+          }
+        });
+
+        currentIndex = newIndex;
+      }
+    } else {
+      // Mobile touch trigger
+      cards.forEach((card) => {
+        const ind = card.querySelector('.active-indicator');
+
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 65%',
+          end: 'bottom 35%',
+          onEnter: () => {
+            gsap.to(card, { borderColor: 'rgba(245, 158, 11, 0.4)', backgroundColor: 'rgba(255, 255, 255, 0.04)', duration: 0.3 });
+            if (ind) gsap.to(ind, { scaleY: 1, duration: 0.3 });
+          },
+          onLeave: () => {
+            gsap.to(card, { borderColor: 'rgba(255, 255, 255, 0.1)', backgroundColor: 'rgba(255, 255, 255, 0.02)', duration: 0.3 });
+            if (ind) gsap.to(ind, { scaleY: 0, duration: 0.3 });
+          },
+          onEnterBack: () => {
+            gsap.to(card, { borderColor: 'rgba(245, 158, 11, 0.4)', backgroundColor: 'rgba(255, 255, 255, 0.04)', duration: 0.3 });
+            if (ind) gsap.to(ind, { scaleY: 1, duration: 0.3 });
+          },
+          onLeaveBack: () => {
+            gsap.to(card, { borderColor: 'rgba(255, 255, 255, 0.1)', backgroundColor: 'rgba(255, 255, 255, 0.02)', duration: 0.3 });
+            if (ind) gsap.to(ind, { scaleY: 0, duration: 0.3 });
+          }
+        });
+      });
+    }
+
+    ScrollTrigger.refresh();
+  };
+
+  document.addEventListener('DOMContentLoaded', initFeaturesMotion);
+  document.addEventListener('astro:page-load', initFeaturesMotion);
+</script>

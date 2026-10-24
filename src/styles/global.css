@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vyapo: #F59E0B;
+  --color-dark: #0a0a0a;
+}
+
+body {
+  background-color: var(--color-dark);
+  color: #ffffff;
+  cursor: none; /* Hide default cursor */
+  overflow-x: hidden;
+}
+
+/* Film grain overlay for that tactile 14islands feel */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
+}
+
+a, button, input, select, textarea {
+  cursor: none !important;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html,
+body,
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

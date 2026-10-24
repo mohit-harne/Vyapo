@@ -1,0 +1,375 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const articles = [
+  {
+    id: "01",
+    tag: "Supply Chain",
+    date: "OCT 2026",
+    readTime: "6 min read",
+    level: "Protocol Architecture",
+    title: "The Death of Physical Bill-of-Ladings in Modern Distribution",
+    summary: "How deterministic state machines and virtual token units are reducing 14-day clearance cycles down to sub-second verifiable transfers across Indian freight corridors.",
+    stat: "99.4% Latency Drop",
+    slug: "/insights/death-of-physical-bol",
+    // Indian Highway Container Freight & Transport Hub
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+    imgAlt: "Indian National Highway Freight Transport Logistics"
+  },
+  {
+    id: "02",
+    tag: "FinTech",
+    date: "SEP 2026",
+    readTime: "9 min read",
+    level: "Market Liquidity",
+    title: "Solving the 90-Day Credit Trap for Kiranas & Wholesalers",
+    summary: "Bridging the liquidity gap across unorganized retail channels via programmatic ledger underwriting and automated invoice escrow for local merchant storefronts.",
+    stat: "₹18M+ Float Unlocked",
+    slug: "/insights/credit-trap-kiranas",
+    // Traditional Indian Wholesale / Kirana Retail Market
+    image: "https://images.unsplash.com/photo-1506484381205-f7945653044d?auto=format&fit=crop&w=800&q=80",
+    imgAlt: "Traditional Indian Merchant Bazaar and Wholesale Market"
+  },
+  {
+    id: "03",
+    tag: "Engineering",
+    date: "AUG 2026",
+    readTime: "12 min read",
+    level: "Distributed Systems",
+    title: "Offline-First Sync Protocols for Semi-Connected Terminals",
+    summary: "Inside our conflict-free replicated data type (CRDT) engine powering handheld POS devices across Tier-3 industrial warehouse corridors and mandi yards.",
+    stat: "Zero Ledger Collision",
+    slug: "/insights/offline-first-crdt",
+    // Indian Industrial Corridor & Manufacturing Assembly
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+    imgAlt: "Tier-2 Industrial Manufacturing and Distribution Facility"
+  },
+  {
+    id: "04",
+    tag: "Operations",
+    date: "JUL 2026",
+    readTime: "5 min read",
+    level: "Warehouse Logistics",
+    title: "Synchronizing Virtual Manifests with Physical Freight",
+    summary: "Algorithmic reconciliations between digital dock manifests and real-time weighbridge IoT telemetry at regional distribution centers in Maharashtra & Gujarat.",
+    stat: "100% Audit Precision",
+    slug: "/insights/virtual-manifest-sync",
+    // Modern Indian FMCG Fulfilment & Logistics Warehouse
+    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80",
+    imgAlt: "Modern Wholesale Warehouse and Pallet Storage in India"
+  }
+];
+
+const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering", "Operations"];
+---
+
+<Layout title="Insights & Technical Research | Vyapo">
+  <div class="relative w-full max-w-full overflow-x-clip bg-transparent text-white selection:bg-vyapo selection:text-black">
+    
+    <!-- Ambient Vyapo Amber Glow Spots -->
+    <div class="absolute -top-32 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-vyapo/10 rounded-full blur-[130px] pointer-events-none mix-blend-screen -z-10"></div>
+    <div class="absolute top-1/2 left-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none mix-blend-screen -z-10"></div>
+
+    <section class="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 sm:pt-36 pb-24 relative z-10 box-border">
+      
+      <!-- HERO HEADER -->
+      <div class="max-w-4xl mb-12 sm:mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[11px] uppercase tracking-[0.25em] text-vyapo mb-5 blog-header-elem">
+          <span class="w-1.5 h-1.5 rounded-full bg-vyapo animate-ping"></span>
+          Engineering & Commerce Dispatch
+        </div>
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[0.94] blog-header-elem">
+          Industry <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-vyapo">
+            Insights & Research.
+          </span>
+        </h1>
+        <p class="text-white/60 text-base sm:text-xl font-light mt-5 leading-relaxed blog-header-elem max-w-2xl">
+          Deep dives into Indian supply chain corridors, retail credit underwriting, and distributed inventory infrastructure.
+        </p>
+      </div>
+
+      <!-- FILTER TABS -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-10 border-b border-white/10 no-scrollbar blog-header-elem">
+        {categories.map((cat, i) => (
+          <button 
+            class={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-300 whitespace-nowrap cursor-none ${
+              i === 0 
+                ? 'bg-vyapo text-black font-bold shadow-[0_0_15px_rgba(245,158,11,0.3)]' 
+                : 'bg-white/[0.03] text-white/60 hover:text-white border border-white/10 hover:border-white/30'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- ARTICLE ARCHIVE CONTAINER -->
+      <div class="article-archive relative border-t border-white/10">
+        {articles.map((item) => (
+          <a
+            href={item.slug}
+            class="article-item block group py-8 sm:py-10 border-b border-white/10 relative cursor-none transition-all duration-500 hover:bg-white/[0.015] px-3 sm:px-5 -mx-3 sm:-mx-5 rounded-2xl"
+            data-stat={item.stat}
+            data-level={item.level}
+            data-read={item.readTime}
+            data-img={item.image}
+          >
+            <!-- Amber Left Border Glow Accent on Hover -->
+            <div class="absolute left-0 top-0 bottom-0 w-[2px] bg-vyapo scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-8 items-center">
+              
+              <!-- IMAGE PREVIEW (Mobile inline & Desktop thumbnail) -->
+              <div class="md:col-span-4 lg:col-span-3">
+                <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[4/3] rounded-xl overflow-hidden bg-black/40 border border-white/10 group-hover:border-vyapo/40 transition-colors duration-500">
+                  <img 
+                    src={item.image} 
+                    alt={item.imgAlt} 
+                    class="article-thumbnail w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <!-- Dark Vignette & Amber Overlay Tint -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                  <div class="absolute inset-0 bg-vyapo/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-color"></div>
+
+                  <!-- Tag pill on top of image -->
+                  <div class="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md border border-white/15 text-[10px] font-mono uppercase tracking-widest text-white/80">
+                    {item.tag}
+                  </div>
+                </div>
+              </div>
+
+              <!-- CONTENT COLUMN -->
+              <div class="md:col-span-6 lg:col-span-7 title-container transition-transform duration-300 group-hover:translate-x-1 sm:group-hover:translate-x-2">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="font-mono text-xs font-bold text-vyapo">
+                    {item.id}
+                  </span>
+                  <span class="text-xs font-mono text-white/40 tracking-wider">
+                    {item.date}
+                  </span>
+                </div>
+
+                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-white group-hover:text-vyapo transition-colors tracking-tight leading-snug mb-2">
+                  {item.title}
+                </h3>
+                
+                <p class="text-white/50 text-xs sm:text-sm font-light leading-relaxed line-clamp-2 sm:line-clamp-3">
+                  {item.summary}
+                </p>
+                
+                <!-- Informative Metric Chips -->
+                <div class="flex flex-wrap items-center gap-3 mt-4 font-mono text-[10px] sm:text-[11px] text-white/40">
+                  <span class="flex items-center gap-1.5 text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-md border border-emerald-400/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    {item.stat}
+                  </span>
+                  <span>•</span>
+                  <span>{item.readTime}</span>
+                  <span>•</span>
+                  <span class="text-white/70">{item.level}</span>
+                </div>
+              </div>
+
+              <!-- ACTION ARROW (Desktop only) -->
+              <div class="md:col-span-2 hidden md:flex items-center justify-end">
+                <div class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/60 group-hover:text-black group-hover:bg-vyapo group-hover:border-vyapo transition-all duration-300 transform group-hover:rotate-45 shadow-lg">
+                  <span class="text-sm font-bold">↗</span>
+                </div>
+              </div>
+
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- DESKTOP GSAP FLOATING TELEMETRY INSPECTOR -->
+      <div 
+        id="article-floating-inspector" 
+        class="fixed top-0 left-0 pointer-events-none opacity-0 z-50 rounded-xl bg-black/90 border border-vyapo/30 p-3.5 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.9)] hidden lg:block -translate-x-1/2 -translate-y-1/2 min-w-[220px]"
+      >
+        <div class="flex items-center justify-between text-[10px] font-mono text-vyapo uppercase tracking-wider mb-1.5 pb-1 border-b border-white/10">
+          <span>Corridor Telemetry</span>
+          <span id="inspect-read">--</span>
+        </div>
+        <p id="inspect-level" class="text-xs font-bold text-white uppercase tracking-tight mb-1">Architecture</p>
+        <div class="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="inspect-stat">Verified Metric</span>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initBlogAnimations = () => {
+    // 1. Header entrance animation
+    gsap.fromTo(
+      '.blog-header-elem',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.1 }
+    );
+
+    // 2. Article rows stagger entrance on first page load
+    const items = document.querySelectorAll('.article-item');
+    if (!items.length) return;
+
+    gsap.fromTo(
+      items,
+      { y: 40, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.14,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.article-archive',
+          start: 'top 85%',
+        }
+      }
+    );
+
+    // 3. Mobile Viewport Center Spotlight Trigger
+    const isMobile = window.matchMedia('(max-width: 1023px)').matches;
+
+    if (isMobile) {
+      items.forEach((item) => {
+        const thumb = item.querySelector('.article-thumbnail');
+        const title = item.querySelector('h3');
+        const amberLine = item.querySelector('.absolute.left-0');
+        const overlay = item.querySelector('.mix-blend-color');
+
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top 65%',
+          end: 'bottom 35%',
+          toggleActions: 'play reverse play reverse',
+          onEnter: () => activateCard(),
+          onEnterBack: () => activateCard(),
+          onLeave: () => deactivateCard(),
+          onLeaveBack: () => deactivateCard(),
+        });
+
+        function activateCard() {
+          // Glow and background highlight
+          gsap.to(item, {
+            backgroundColor: 'rgba(255, 255, 255, 0.04)',
+            borderColor: 'rgba(245, 158, 11, 0.4)',
+            duration: 0.4,
+            ease: 'power2.out'
+          });
+
+          // Un-grayscale and saturate thumbnail
+          if (thumb) {
+            gsap.to(thumb, {
+              filter: 'grayscale(0%) contrast(100%) brightness(100%)',
+              scale: 1.04,
+              duration: 0.5,
+              ease: 'power2.out'
+            });
+          }
+
+          // Highlight title in Vyapo amber
+          if (title) {
+            gsap.to(title, { color: '#F59E0B', x: 4, duration: 0.3 });
+          }
+
+          // Expand amber left accent bar
+          if (amberLine) {
+            gsap.to(amberLine, { scaleY: 1, duration: 0.35, ease: 'power2.out' });
+          }
+
+          // Warm color wash over photo
+          if (overlay) {
+            gsap.to(overlay, { opacity: 1, duration: 0.4 });
+          }
+        }
+
+        function deactivateCard() {
+          gsap.to(item, {
+            backgroundColor: 'transparent',
+            borderColor: 'rgba(255, 255, 255, 0.1)',
+            duration: 0.4,
+            ease: 'power2.in'
+          });
+
+          if (thumb) {
+            gsap.to(thumb, {
+              filter: 'grayscale(100%) contrast(125%) brightness(75%)',
+              scale: 1,
+              duration: 0.5,
+              ease: 'power2.in'
+            });
+          }
+
+          if (title) {
+            gsap.to(title, { color: '#FFFFFF', x: 0, duration: 0.3 });
+          }
+
+          if (amberLine) {
+            gsap.to(amberLine, { scaleY: 0, duration: 0.3, ease: 'power2.in' });
+          }
+
+          if (overlay) {
+            gsap.to(overlay, { opacity: 0, duration: 0.4 });
+          }
+        }
+      });
+    }
+
+    // 4. Desktop Floating Telemetry Inspector via Mouse Tracking
+    if (window.matchMedia('(pointer: fine)').matches) {
+      const inspector = document.getElementById('article-floating-inspector');
+      const inspectStat = document.getElementById('inspect-stat');
+      const inspectLevel = document.getElementById('inspect-level');
+      const inspectRead = document.getElementById('inspect-read');
+
+      if (inspector) {
+        const xTo = gsap.quickTo(inspector, 'x', { duration: 0.25, ease: 'power2.out' });
+        const yTo = gsap.quickTo(inspector, 'y', { duration: 0.25, ease: 'power2.out' });
+
+        window.addEventListener('mousemove', (e) => {
+          xTo(e.clientX + 130);
+          yTo(e.clientY - 20);
+        });
+
+        items.forEach((item) => {
+          item.addEventListener('mouseenter', () => {
+            if (inspectStat && inspectLevel && inspectRead) {
+              inspectStat.textContent = item.getAttribute('data-stat') || '';
+              inspectLevel.textContent = item.getAttribute('data-level') || '';
+              inspectRead.textContent = item.getAttribute('data-read') || '';
+            }
+
+            gsap.to(inspector, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.25,
+              ease: 'power2.out',
+            });
+          });
+
+          item.addEventListener('mouseleave', () => {
+            gsap.to(inspector, {
+              opacity: 0,
+              scale: 0.9,
+              duration: 0.2,
+              ease: 'power2.in',
+            });
+          });
+        });
+      }
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', initBlogAnimations);
+  document.addEventListener('astro:page-load', initBlogAnimations);
+</script>

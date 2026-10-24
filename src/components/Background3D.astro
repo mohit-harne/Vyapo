@@ -1,0 +1,257 @@
+
+<div id="bg-canvas-container" transition:persist>
+  <canvas id="bg-webgl"></canvas>
+</div>
+
+<style>
+  #bg-canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  #bg-webgl {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+
+<script>
+  import * as THREE from 'three';
+  import gsap from 'gsap';
+
+  function initDynamicProductWorld() {
+    const canvas = document.getElementById('bg-webgl') as HTMLCanvasElement;
+    if (!canvas || canvas.dataset.initialized === 'true') return;
+    canvas.dataset.initialized = 'true';
+
+    // 1. Scene & Camera
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 16;
+
+    // 2. High-Performance WebGL Renderer
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+
+    const worldGroup = new THREE.Group();
+    scene.add(worldGroup);
+
+    // 3. Fallback Texture Generator for clean cutouts
+    function createIsolatedProductTexture(icon: string) {
+      const c = document.createElement('canvas');
+      c.width = 512;
+      c.height = 512;
+      const ctx = c.getContext('2d')!;
+      ctx.clearRect(0, 0, 512, 512);
+
+      ctx.font = '320px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(icon, 256, 260);
+
+      const texture = new THREE.CanvasTexture(c);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      return texture;
+    }
+
+    const textureLoader = new THREE.TextureLoader();
+    const catalog = [
+      { name: 'Yarn Spool', icon: '🧵', path: '#' },
+      { name: 'Needle & Thread', icon: '🪡', path: '#' },
+      { name: 'Safety Pin', icon: '🧷', path: '#' },
+      { name: 'T-Shirt', icon: '👕', path: '#' },
+      { name: 'Denim Jeans', icon: '👖', path: '#' },
+      { name: 'Formal Shirt & Tie', icon: '👔', path: '#' },
+      { name: 'Dress', icon: '👗', path: '#' },
+      { name: 'Jacket & Coat', icon: '🧥', path: '#' },
+      { name: 'Scarf / Shawl', icon: '🧣', path: '#' },
+      { name: 'Socks / Knitwear', icon: '🧦', path: '#' },
+      { name: 'Cap & Headwear', icon: '🧢', path: '#' },
+      { name: 'Sneakers', icon: '👟', path: '#' },
+      { name: 'Leather Boots', icon: '🥾', path: '#' },
+      { name: 'Flat Shoe', icon: '🥿', path: '#' },
+      { name: 'Tote / Handbag', icon: '👜', path: '#' },
+      { name: 'Backpack', icon: '🎒', path: '#' },
+      { name: 'Clutch / Pouch', icon: '👝', path: '#' },
+      { name: 'Factory / Mill', icon: '🏭', path: '#' },
+      { name: 'Freight / Distribution', icon: '🚛', path: '#' },
+      { name: 'Cargo Delivery', icon: '🚚', path: '#' },
+      { name: 'Shipping Carton', icon: '📦', path: '#' },
+      { name: 'Retail Storefront', icon: '🏬', path: '#' },
+      { name: 'Online Storefront', icon: '🏪', path: '#' },
+      { name: 'Shopping Cart', icon: '🛒', path: '#' },
+      { name: 'Product Price Tag', icon: '🏷️', path: '#' },
+      { name: 'Merchant Invoice', icon: '🧾', path: '#' },
+    ];
+
+    const materials = catalog.map((item) => {
+      const fallbackTex = createIsolatedProductTexture(item.icon);
+
+      const mat = new THREE.MeshBasicMaterial({
+        map: fallbackTex,
+        transparent: true,
+        alphaTest: 0.15,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+        opacity: 0.4,
+      });
+
+      textureLoader.load(
+        item.path,
+        (loadedTex) => {
+          loadedTex.colorSpace = THREE.SRGBColorSpace;
+          mat.map = loadedTex;
+          mat.needsUpdate = true;
+        },
+        undefined,
+        () => {}
+      );
+
+      return mat;
+    });
+
+    // 4. Products Setup
+    const totalItems = 32;
+    const geometry = new THREE.PlaneGeometry(2.3, 2.3);
+
+    const bounds = {
+      x: 18,
+      y: 12,
+      zNear: 4,
+      zFar: -12,
+    };
+
+    interface ProductEntity {
+      mesh: THREE.Mesh;
+      vx: number;
+      vy: number;
+      vz: number;
+      rotSpeedZ: number;
+      seed: number;
+    }
+
+    const entities: ProductEntity[] = [];
+
+    for (let i = 0; i < totalItems; i++) {
+      const mat = materials[i % materials.length];
+      const mesh = new THREE.Mesh(geometry, mat);
+
+      mesh.position.set(
+        (Math.random() - 0.5) * bounds.x * 2,
+        (Math.random() - 0.5) * bounds.y * 2,
+        bounds.zFar + Math.random() * (bounds.zNear - bounds.zFar)
+      );
+
+      mesh.rotation.x = 0;
+      mesh.rotation.y = 0;
+      mesh.rotation.z = Math.random() * Math.PI * 2;
+
+      const scale = 0.8 + Math.random() * 0.55;
+      mesh.scale.set(scale, scale, 1);
+
+      worldGroup.add(mesh);
+
+      entities.push({
+        mesh,
+        vx: (Math.random() - 0.5) * 0.012,
+        vy: (Math.random() - 0.5) * 0.012,
+        vz: (Math.random() - 0.5) * 0.008,
+        rotSpeedZ: (Math.random() - 0.5) * 0.012,
+        seed: Math.random() * 100,
+      });
+    }
+
+    // 5. Subtle Camera Parallax tracking mouse
+    const mouse = { x: 0, y: 0 };
+    window.addEventListener('pointermove', (e) => {
+      const normX = (e.clientX / window.innerWidth - 0.5) * 2;
+      const normY = -(e.clientY / window.innerHeight - 0.5) * 2;
+
+      gsap.to(mouse, {
+        x: normX,
+        y: normY,
+        duration: 1.4,
+        ease: 'power2.out',
+      });
+    });
+
+    // 6. Responsive Viewport Handler
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+    });
+
+    // 7. Render Loop with THREE.Timer (or performance.now() fallback)
+    const hasThreeTimer = typeof (THREE as any).Timer !== 'undefined';
+    const timer = hasThreeTimer ? new (THREE as any).Timer() : null;
+    const startTime = performance.now();
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      let time = 0;
+      if (timer) {
+        timer.update();
+        time = timer.getElapsed();
+      } else {
+        time = (performance.now() - startTime) * 0.001;
+      }
+
+      for (let i = 0; i < entities.length; i++) {
+        const item = entities[i];
+        const p = item.mesh.position;
+
+        // Position drift
+        p.x += item.vx + Math.sin(time * 0.4 + item.seed) * 0.004;
+        p.y += item.vy + Math.cos(time * 0.4 + item.seed) * 0.004;
+        p.z += item.vz;
+
+        // Strictly rotate only on Z-axis
+        item.mesh.rotation.x = 0;
+        item.mesh.rotation.y = 0;
+        item.mesh.rotation.z += item.rotSpeedZ;
+
+        // Boundary wrap-around
+        if (p.x > bounds.x) p.x = -bounds.x;
+        if (p.x < -bounds.x) p.x = bounds.x;
+
+        if (p.y > bounds.y) p.y = -bounds.y;
+        if (p.y < -bounds.y) p.y = bounds.y;
+
+        if (p.z > bounds.zNear) p.z = bounds.zFar;
+        if (p.z < bounds.zFar) p.z = bounds.zNear;
+      }
+
+      // Parallax camera tilt
+      worldGroup.position.x = mouse.x * 0.4;
+      worldGroup.position.y = mouse.y * 0.3;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  }
+
+  initDynamicProductWorld();
+  document.addEventListener('astro:page-load', initDynamicProductWorld);
+</script>

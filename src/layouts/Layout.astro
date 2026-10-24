@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+import InteractiveWrapper from '../components/InteractiveWrapper.jsx';
+import Background3D from '../components/Background3D.astro';
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.jsx';
+import Loader from '../components/Loader.astro';
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- initial-scale=1.0 and viewport-fit=cover fixes mobile notch and scale bugs -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{title} | Vyapo</title>
+    <!-- <link rel="icon" type="image/png" href="/favicon.png" /> -->
+  </head>
+  <body class="bg-dark text-white [@media(pointer:fine)]:cursor-none overflow-x-hidden antialiased flex flex-col min-h-[100dvh]">
+   <Loader  client:load />
+    <Background3D />
+    
+   
+    <div class="noise-overlay pointer-events-none fixed inset-0 z-0"></div>
+
+    <InteractiveWrapper client:load>
+      <Navbar client:load />
+      <!-- flex-1 ensures footer stays at bottom without creating false blank space -->
+      <main class="flex-1 w-full relative z-10">
+        <slot />
+      </main>
+      <Footer client:load />
+    </InteractiveWrapper>
+  </body>
+</html>

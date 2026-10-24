@@ -1,0 +1,332 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    step: "01",
+    phase: "Upstream Layer",
+    title: "Virtual Inventory Minting",
+    tagline: "Factory Output to Verifiable Digital Custody",
+    summary: "Manufacturers convert bulk industrial factory runs into cryptographically verified virtual stock units. Enables transparent batch allocation, real-time demand tracking, and eliminated duplicate invoicing before physical dispatch.",
+    features: ["Batch Tokenization", "Zero-Loss Ledger", "Automated E-Way Generation", "Yield Forecasting"],
+    metric: "100% Pallet Traceability",
+    metricSub: "Zero phantom stock records",
+    badge: "PRODUCER NODE",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80",
+    imageAlt: "Tier-1 Precision Industrial Manufacturing and Packaging Line in India",
+    coordinates: "19.0760° N, 72.8777° E (Bhiwandi Hub)"
+  },
+  {
+    step: "02",
+    phase: "Midstream Layer",
+    title: "Automated Wholesaler Routing",
+    tagline: "Algorithmic Depot Routing & Split Escrow",
+    summary: "Dynamic distribution rails matching regional retailer demand spikes with nearest regional stock hubs. Integrates dynamic credit limits, multi-tier pricing brackets, and automated split payments upon verifiable delivery.",
+    features: ["Split Escrow Payouts", "Geo-Proximity Routing", "Dynamic Credit Line", "Cold-Chain IoT Telematics"],
+    metric: "4.2h Average Dispatch",
+    metricSub: "Down from 36h transit queue",
+    badge: "DEPOT DISPATCH",
+    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1000&q=80",
+    imageAlt: "Indian National Highway Multi-Axle Logistics Freight Hub",
+    coordinates: "18.5204° N, 73.8567° E (Pune Corridor)"
+  },
+  {
+    step: "03",
+    phase: "Downstream Layer",
+    title: "Point-Of-Sale Terminal Sync",
+    tagline: "Instant Shelf Liquidity to Consumer Demand",
+    summary: "Empower micro-retailers with instant reconciliation. Scanning an incoming delivery unlocks instant shelf visibility on consumer-facing local storefronts and automated WhatsApp commerce catalogs.",
+    features: ["Instant WhatsApp Catalog", "Sub-Second Barcode Sync", "Offline-First CRDT", "Daily UPI Settlements"],
+    metric: "Sub-Second Shelf Sync",
+    metricSub: "Direct to consumer storefront",
+    badge: "RETAIL POS RAIL",
+    image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=1000&q=80",
+    imageAlt: "Digital Handheld POS Scanner Processing Wholesale Inventory at Retail Counter",
+    coordinates: "20.9374° N, 77.7796° E (Vidarbha Exchange)"
+  }
+];
+---
+
+<Layout title="Services & Solutions | Vyapo">
+  <div class="relative w-full max-w-full overflow-x-clip bg-transparent text-white selection:bg-vyapo selection:text-black">
+    
+    <!-- Ambient Glow Nodes -->
+    <div class="absolute -top-32 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-vyapo/10 rounded-full blur-[130px] pointer-events-none mix-blend-screen -z-10"></div>
+    <div class="absolute top-[40%] -left-20 w-[260px] sm:w-[420px] h-[260px] sm:h-[420px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none mix-blend-screen -z-10"></div>
+
+    <section class="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-28 sm:pt-36 pb-32 relative z-10 box-border">
+      
+      <!-- HERO HEADER -->
+      <div class="max-w-3xl mb-14 sm:mb-20">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[11px] uppercase tracking-[0.25em] text-vyapo mb-5 services-header-elem">
+          <span class="w-1.5 h-1.5 rounded-full bg-vyapo animate-ping"></span>
+          End-to-End Infrastructure
+        </div>
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[0.94] services-header-elem">
+          Ecosystem <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-vyapo">
+            Solutions.
+          </span>
+        </h1>
+        <p class="text-white/60 text-base sm:text-xl font-light mt-5 leading-relaxed services-header-elem">
+          Synchronizing physical cargo displacement with digital cryptographic custody across manufacturers, distributors, and storefronts.
+        </p>
+      </div>
+
+      <!-- MAIN LAYOUT: GSAP PINNED CONTROLLER + DYNAMIC CARDS -->
+      <div class="services-pinned-container grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start relative pb-20">
+        
+        <!-- LEFT: Fixed Protocol Navigation Deck (Pinned via GSAP on Desktop) -->
+        <div class="hidden lg:block lg:col-span-5 relative stage-column">
+          <div class="pinned-nav-box space-y-6 will-change-transform">
+            
+            <div class="rounded-3xl bg-white/[0.02] border border-white/10 p-6 backdrop-blur-xl relative overflow-hidden shadow-2xl">
+              <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-vyapo block mb-2">Navigation Matrix</span>
+              <h3 class="text-2xl font-bold uppercase tracking-tight text-white mb-4">Supply Rails</h3>
+              
+              <div class="space-y-3 nav-pills-container">
+                {services.map((s, idx) => (
+                  <button 
+                    data-target={`#service-card-${idx}`}
+                    class={`nav-pill nav-pill-${idx} w-full text-left p-3.5 rounded-xl border transition-all duration-300 flex items-center justify-between cursor-none ${idx === 0 ? 'border-vyapo/60 bg-vyapo/10 text-white shadow-[0_0_20px_rgba(245,158,11,0.15)]' : 'border-white/10 bg-white/[0.02] text-white/50 hover:text-white hover:border-white/20'}`}
+                  >
+                    <div>
+                      <span class="block font-mono text-[9px] uppercase tracking-widest text-vyapo mb-0.5">{s.phase}</span>
+                      <span class="font-bold text-sm uppercase tracking-wide">{s.title}</span>
+                    </div>
+                    <span class="font-mono text-xs opacity-60">0{idx + 1}</span>
+                  </button>
+                ))}
+              </div>
+
+              <!-- Realtime Protocol Status Widget -->
+              <div class="mt-6 pt-5 border-t border-white/10 font-mono text-[11px] space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-white/40">Network Load</span>
+                  <span class="text-emerald-400 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Operational (0.02s)
+                  </span>
+                </div>
+                <div class="flex items-center justify-between text-white/50">
+                  <span>Reconciliation Mode</span>
+                  <span>Instant Settlement</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terminal Info Pill -->
+            <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 font-mono text-xs text-white/40 leading-relaxed">
+              * Every tier communicates through encrypted JSON-RPC manifests, verifying physical mass against digital state.
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT: Interactive Service Solution Cards -->
+        <div class="lg:col-span-7 space-y-12 sm:space-y-16 services-stack">
+          {services.map((item, idx) => (
+            <div 
+              id={`service-card-${idx}`}
+              class="service-card group relative rounded-3xl bg-white/[0.02] border border-white/10 p-6 sm:p-9 backdrop-blur-xl transition-all duration-500 overflow-hidden box-border"
+              data-index={idx}
+            >
+              <!-- Card Ambient Glow Edge -->
+              <div class="card-glow absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.15) 0%, transparent 70%);"></div>
+              
+              <!-- Subtle Amber Left Active Bar -->
+              <div class="active-indicator absolute left-0 top-0 bottom-0 w-[3px] bg-vyapo scale-y-0 transition-transform duration-500 origin-top"></div>
+
+              <!-- Top Row: Phase + Identifier Badge -->
+              <div class="relative z-10 flex items-center justify-between gap-3 mb-5">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-vyapo/10 border border-vyapo/20 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-vyapo">
+                  <span class="w-1.5 h-1.5 rounded-full bg-vyapo"></span>
+                  {item.phase}
+                </div>
+                <span class="font-mono text-xs text-white/30 uppercase tracking-widest">
+                  {item.badge}
+                </span>
+              </div>
+
+              <!-- Hero Cinematic Visual with Laser Coordinates HUD -->
+              <div class="relative z-10 w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6 bg-black/60 border border-white/10 group-hover:border-vyapo/40 transition-colors duration-500">
+                <img 
+                  src={item.image} 
+                  alt={item.imageAlt}
+                  class="service-image w-full h-full object-cover grayscale contrast-125 brightness-80 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out pointer-events-none"
+                  loading="lazy"
+                />
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+
+                <div class="absolute left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-vyapo to-transparent opacity-0 group-hover:opacity-90 group-hover:animate-pulse transition-opacity duration-500 top-1/2 pointer-events-none"></div>
+
+                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md border border-white/10 font-mono text-[9px] text-white/70">
+                  {item.coordinates}
+                </div>
+
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono">
+                  <div class="px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-white/15">
+                    <span class="block text-[11px] font-bold text-vyapo">{item.metric}</span>
+                    <span class="block text-[9px] text-white/50">{item.metricSub}</span>
+                  </div>
+                  <span class="text-xs text-white/40 hidden sm:block">0{idx + 1} // 03</span>
+                </div>
+              </div>
+
+              <!-- Title & Tagline -->
+              <div class="relative z-10 mb-4">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-white group-hover:text-vyapo transition-colors duration-300">
+                  {item.title}
+                </h2>
+                <p class="font-mono text-xs sm:text-sm text-vyapo/80 mt-1 uppercase tracking-wider">
+                  {item.tagline}
+                </p>
+              </div>
+
+              <!-- Summary Description -->
+              <p class="relative z-10 text-sm sm:text-base text-white/60 font-light leading-relaxed mb-6">
+                {item.summary}
+              </p>
+
+              <!-- Feature Architecture Chips -->
+              <div class="relative z-10 pt-5 border-t border-white/10 flex flex-wrap gap-2">
+                {item.features.map((feat) => (
+                  <span class="px-3 py-1 rounded-lg bg-white/[0.03] border border-white/10 font-mono text-[10px] sm:text-[11px] text-white/70 group-hover:border-white/20 transition-colors">
+                    {feat}
+                  </span>
+                ))}
+              </div>
+
+            </div>
+          ))}
+
+          <!-- Dedicated bottom spacer ensuring full scroll cycle completion -->
+          <div class="h-20 lg:h-32 pointer-events-none"></div>
+        </div>
+
+      </div>
+
+    </section>
+  </div>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initServicesMotion = () => {
+    // Clear any previous stale triggers
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+
+    // 1. Staggered Header Entrance
+    gsap.fromTo(
+      '.services-header-elem',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.1 }
+    );
+
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+    const cards = document.querySelectorAll('.service-card');
+    const pills = document.querySelectorAll('.nav-pill');
+
+    if (isDesktop) {
+      // 2. Lock Left Frame using GSAP Pinning
+      ScrollTrigger.create({
+        trigger: '.services-pinned-container',
+        start: 'top 100px',
+        end: 'bottom bottom',
+        pin: '.pinned-nav-box',
+        pinSpacing: false,
+      });
+
+      // 3. Desktop 3D Mouse Tilt
+      if (window.matchMedia('(pointer: fine)').matches) {
+        cards.forEach((card) => {
+          card.addEventListener('mousemove', (e: Event) => {
+            const mouseEvent = e as MouseEvent;
+            const rect = (card as HTMLElement).getBoundingClientRect();
+            const x = mouseEvent.clientX - rect.left - rect.width / 2;
+            const y = mouseEvent.clientY - rect.top - rect.height / 2;
+
+            gsap.to(card, {
+              rotationY: x * 0.015,
+              rotationX: -y * 0.015,
+              transformPerspective: 900,
+              duration: 0.35,
+              ease: 'power1.out',
+            });
+          });
+
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+              rotationY: 0,
+              rotationX: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+            });
+          });
+        });
+      }
+    }
+
+    // 4. Synchronized Active State Tracker & Left Pill Switcher
+    cards.forEach((card, i) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: i === cards.length - 1 ? 'top 75%' : 'top 60%',
+        end: i === cards.length - 1 ? 'bottom 85%' : 'bottom 40%',
+        onEnter: () => activateStep(i),
+        onEnterBack: () => activateStep(i),
+      });
+    });
+
+    function activateStep(index: number) {
+      // Update Left Navigation Pills
+      pills.forEach((p, idx) => {
+        if (idx === index) {
+          p.classList.add('border-vyapo/60', 'bg-vyapo/10', 'text-white', 'shadow-[0_0_20px_rgba(245,158,11,0.15)]');
+          p.classList.remove('border-white/10', 'bg-white/[0.02]', 'text-white/50');
+        } else {
+          p.classList.remove('border-vyapo/60', 'bg-vyapo/10', 'text-white', 'shadow-[0_0_20px_rgba(245,158,11,0.15)]');
+          p.classList.add('border-white/10', 'bg-white/[0.02]', 'text-white/50');
+        }
+      });
+
+      // Highlight Active Card Border & Indicator Bar
+      cards.forEach((c, idx) => {
+        const ind = c.querySelector('.active-indicator');
+        const img = c.querySelector('.service-image');
+
+        if (idx === index) {
+          gsap.to(c, { borderColor: 'rgba(245, 158, 11, 0.4)', backgroundColor: 'rgba(255, 255, 255, 0.04)', duration: 0.4 });
+          if (ind) gsap.to(ind, { scaleY: 1, duration: 0.3 });
+          if (img) gsap.to(img, { filter: 'grayscale(0%) contrast(100%) brightness(100%)', scale: 1.02, duration: 0.5 });
+        } else {
+          gsap.to(c, { borderColor: 'rgba(255, 255, 255, 0.1)', backgroundColor: 'rgba(255, 255, 255, 0.02)', duration: 0.4 });
+          if (ind) gsap.to(ind, { scaleY: 0, duration: 0.3 });
+          if (img) gsap.to(img, { filter: 'grayscale(100%) contrast(125%) brightness(80%)', scale: 1, duration: 0.5 });
+        }
+      });
+    }
+
+    // 5. Click Pill to Smooth-Scroll to Card
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const targetId = pill.getAttribute('data-target');
+        if (targetId) {
+          const targetElem = document.querySelector(targetId);
+          if (targetElem) {
+            targetElem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      });
+    });
+
+    ScrollTrigger.refresh();
+  };
+
+  document.addEventListener('DOMContentLoaded', initServicesMotion);
+  document.addEventListener('astro:page-load', initServicesMotion);
+</script>
