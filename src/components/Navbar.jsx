@@ -24,7 +24,7 @@ export default function Navbar() {
 
   const navItems = [
     { label: 'Home', href: '/' },
-    { label: 'Merchant Stories', href: '/MerchantStories' },
+    { label: 'Merchant Stories', href: 'https://vyaparnama-mu.vercel.app/' },
     { label: 'Blogs', href: '/Blogs' },
     { label: 'About Us', href: '/about' },
     { label: 'Downloads', href: '/download' },
