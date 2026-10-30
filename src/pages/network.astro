@@ -4,48 +4,102 @@ import TextReveal from '../components/TextReveal.jsx';
 ---
 
 <Layout title="The Network">
-  <section class="pt-40 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
-    <TextReveal client:load className="mb-32">
-      <h1 class="text-6xl md:text-[8vw] leading-[0.9] font-black uppercase tracking-tighter">
-        The Merchant <br/>
-        <span class="text-transparent [-webkit-text-stroke:1px_#ffffff] opacity-50">Ecosystem.</span>
+  <section class="pt-32 sm:pt-40 pb-24 px-5 sm:px-8 md:px-12 max-w-7xl mx-auto min-h-screen">
+    
+    <!-- Hero Header -->
+    <TextReveal client:load className="mb-16 md:mb-24">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-vyapo/10 border border-vyapo/20 font-mono text-[11px] uppercase tracking-[0.25em] text-vyapo mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Ecosystem Participants
+      </div>
+      <h1 class="text-5xl sm:text-7xl md:text-[7.5vw] leading-[0.92] font-black uppercase tracking-tighter">
+        The Merchant <br />
+        <span class="text-transparent [-webkit-text-stroke:1px_#ffffff] opacity-40">Ecosystem.</span>
       </h1>
     </TextReveal>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-32">
-      <TextReveal client:load>
-        <p class="text-2xl md:text-4xl font-light text-white/70 leading-snug">
-          Connecting B2B and B2C seamlessly. We streamline the entire product journey, from manufacturing directly to the end customer[cite: 2].
+    <!-- Split Layout: Sticky Left Content + Scrolling Right Rail -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-start relative">
+      
+      <!-- LEFT COLUMN: Sticky / Fixed on Desktop Viewports -->
+      <div class="md:col-span-5 md:sticky md:top-36 self-start space-y-6">
+        <TextReveal client:load>
+          <p class="text-2xl sm:text-3xl md:text-4xl font-light text-white/80 leading-snug">
+            Connecting B2B with B2C to the end consumer seamlessly.
+          </p>
+        </TextReveal>
+
+        <p class="text-white/50 text-sm sm:text-base font-light leading-relaxed max-w-md">
+          We streamline the entire product journey, from manufacturing directly to the end customer through a synchronized digital network.
         </p>
-      </TextReveal>
 
-      <TextReveal client:load>
-        <div class="space-y-12">
-          <div class="border-l border-vyapo pl-8 relative">
-            <div class="absolute w-3 h-3 bg-vyapo rounded-full -left-[6px] top-2 shadow-[0_0_10px_#F59E0B]"></div>
-            <h3 class="text-3xl font-bold mb-4 uppercase tracking-wider">Manufacturers</h3>
-            <p class="text-white/60 text-lg leading-relaxed">
-              The origin point. Manufacturers utilize Vyapo's virtual inventory system to create and manage stock, retaining the power to decide exactly whom they want to sell to[cite: 2].
-            </p>
-          </div>
-
-          <div class="border-l border-white/20 pl-8 relative">
-            <div class="absolute w-3 h-3 bg-white/20 rounded-full -left-[6px] top-2"></div>
-            <h3 class="text-3xl font-bold mb-4 uppercase tracking-wider">Wholesalers & Distributors</h3>
-            <p class="text-white/60 text-lg leading-relaxed">
-              Wholesalers purchase from manufacturers and sell to retailers. Distributors operate as authorized stockists for specific companies within our digital merchant directory[cite: 2].
-            </p>
-          </div>
-
-          <div class="border-l border-white/20 pl-8 relative">
-            <div class="absolute w-3 h-3 bg-white/20 rounded-full -left-[6px] top-2"></div>
-            <h3 class="text-3xl font-bold mb-4 uppercase tracking-wider">Retailers</h3>
-            <p class="text-white/60 text-lg leading-relaxed">
-              Empowered by virtual inventory. Retailers can buy from wholesalers, distributors, or directly from manufacturers, effortlessly integrating this inventory with their sales process for end consumers[cite: 2].
-            </p>
-          </div>
+        <div class="pt-4 flex items-center gap-2 font-mono text-xs text-white/40">
+          <span class="w-2 h-2 rounded-full bg-vyapo"></span>
+          <span>4 Connected Tiers of Supply</span>
         </div>
-      </TextReveal>
+      </div>
+
+      <!-- RIGHT COLUMN: Scrolling Merchant Categories -->
+      <div class="md:col-span-7 space-y-10 sm:space-y-14">
+        
+        <!-- 1. Manufacturers -->
+        <TextReveal client:load>
+          <div class="group border-l border-vyapo pl-6 sm:pl-8 relative transition-colors duration-300">
+            <div class="absolute w-3 h-3 bg-vyapo rounded-full -left-[6.5px] top-2 shadow-[0_0_12px_#F59E0B]"></div>
+            <span class="font-mono text-xs text-vyapo tracking-widest uppercase block mb-1">Tier 01</span>
+            <h3 class="text-2xl sm:text-3xl font-bold mb-3 uppercase tracking-wider text-white group-hover:text-vyapo transition-colors">
+              Manufacturers
+            </h3>
+            <p class="text-white/60 text-base sm:text-lg leading-relaxed font-light">
+              The origin point. Manufacturers utilize Vyapo's Special Features to create and manage Digital Inventory, retaining the power to decide exactly whom they want to sell to.
+            </p>
+          </div>
+        </TextReveal>
+
+        <!-- 2. Wholesalers -->
+        <TextReveal client:load>
+          <div class="group border-l border-white/20 pl-6 sm:pl-8 relative hover:border-vyapo transition-colors duration-300">
+            <div class="absolute w-3 h-3 bg-white/30 rounded-full -left-[6.5px] top-2 group-hover:bg-vyapo group-hover:shadow-[0_0_10px_#F59E0B] transition-all"></div>
+            <span class="font-mono text-xs text-white/40 group-hover:text-vyapo tracking-widest uppercase block mb-1 transition-colors">Tier 02</span>
+            <h3 class="text-2xl sm:text-3xl font-bold mb-3 uppercase tracking-wider text-white group-hover:text-vyapo transition-colors">
+              Wholesalers
+            </h3>
+            <p class="text-white/60 text-base sm:text-lg leading-relaxed font-light">
+              Bulk trade reconcilers. Wholesalers aggregate Digital Inventory directly from verified manufacturing lots, supply regional hubs, and disburse inventory blocks efficiently to retailers.
+            </p>
+          </div>
+        </TextReveal>
+
+        <!-- 3. Distributors -->
+        <TextReveal client:load>
+          <div class="group border-l border-white/20 pl-6 sm:pl-8 relative hover:border-vyapo transition-colors duration-300">
+            <div class="absolute w-3 h-3 bg-white/30 rounded-full -left-[6.5px] top-2 group-hover:bg-vyapo group-hover:shadow-[0_0_10px_#F59E0B] transition-all"></div>
+            <span class="font-mono text-xs text-white/40 group-hover:text-vyapo tracking-widest uppercase block mb-1 transition-colors">Tier 03</span>
+            <h3 class="text-2xl sm:text-3xl font-bold mb-3 uppercase tracking-wider text-white group-hover:text-vyapo transition-colors">
+              Distributors
+            </h3>
+            <p class="text-white/60 text-base sm:text-lg leading-relaxed font-light">
+              Authorized territory handlers. Distributors operate as exclusive stockists for dedicated brand lines within our directory, managing logistics pipelines and regional retail allocation.
+            </p>
+          </div>
+        </TextReveal>
+
+        <!-- 4. Retailers -->
+        <TextReveal client:load>
+          <div class="group border-l border-white/20 pl-6 sm:pl-8 relative hover:border-vyapo transition-colors duration-300">
+            <div class="absolute w-3 h-3 bg-white/30 rounded-full -left-[6.5px] top-2 group-hover:bg-vyapo group-hover:shadow-[0_0_10px_#F59E0B] transition-all"></div>
+            <span class="font-mono text-xs text-white/40 group-hover:text-vyapo tracking-widest uppercase block mb-1 transition-colors">Tier 04</span>
+            <h3 class="text-2xl sm:text-3xl font-bold mb-3 uppercase tracking-wider text-white group-hover:text-vyapo transition-colors">
+              Retailers
+            </h3>
+            <p class="text-white/60 text-base sm:text-lg leading-relaxed font-light">
+              Empowered by Digital Inventory and Vyapo's Special Features. Retailers can buy from wholesalers, distributors, or directly from manufacturers, effortlessly integrating this inventory with their sales process for end consumers.
+            </p>
+          </div>
+        </TextReveal>
+
+      </div>
+
     </div>
   </section>
 </Layout>

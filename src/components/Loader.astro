@@ -2,15 +2,13 @@
 // src/components/Loader.astro
 ---
 
-<div id="vyapo-loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
-  <!-- Split Curtains (No borders, 0.5% overlap to kill sub-pixel seam) -->
-  <div class="loader-bg-top absolute top-0 left-0 w-full h-[51%] bg-[#0a0a0a] pointer-events-none will-change-transform"></div>
-  <div class="loader-bg-bottom absolute bottom-0 left-0 w-full h-[51%] bg-[#0a0a0a] pointer-events-none will-change-transform"></div>
+<div id="vyapo-loader" class="fixed inset-0 z-100 flex items-center justify-center bg-dark overflow-hidden">
+  <!-- Split Curtains -->
+  <div class="loader-bg-top absolute top-0 left-0 w-full h-[51%] bg-dark pointer-events-none will-change-transform"></div>
+  <div class="loader-bg-bottom absolute bottom-0 left-0 w-full h-[51%] bg-dark pointer-events-none will-change-transform"></div>
 
   <!-- Center Content Container -->
   <div class="loader-content relative z-10 flex flex-col items-center justify-center pointer-events-none">
-    
-    <!-- Logo with ambient glow -->
     <div class="relative flex items-center justify-center mb-8">
       <div class="loader-glow absolute w-32 h-32 rounded-full bg-vyapo/20 blur-2xl"></div>
       <img 
@@ -21,7 +19,7 @@
     </div>
 
     <!-- Progress Track & Bar -->
-    <div class="w-48 h-[2px] bg-white/10 rounded-full overflow-hidden relative mb-4">
+    <div class="w-48 h-0.5 bg-white/10 rounded-full overflow-hidden relative mb-4">
       <div class="loader-bar absolute top-0 left-0 h-full w-full bg-vyapo origin-left scale-x-0"></div>
     </div>
 
@@ -36,10 +34,16 @@
 <script>
   import { gsap } from 'gsap';
 
+  let hasLoaded = false;
+
   const runLoader = () => {
     const loader = document.getElementById('vyapo-loader');
-    if (!loader) return;
+    if (!loader || hasLoaded) {
+      if (loader) loader.style.display = 'none';
+      return;
+    }
 
+    hasLoaded = true;
     document.body.style.overflow = 'hidden';
 
     const tl = gsap.timeline({
@@ -104,13 +108,6 @@
     }, '<');
   };
 
-  if (document.readyState === 'complete') {
-    runLoader();
-  } else {
-    window.addEventListener('load', runLoader);
-  }
-
-  document.addEventListener('astro:before-preparation', () => {
-    document.body.style.overflow = '';
-  });
+  document.addEventListener('DOMContentLoaded', runLoader);
+  document.addEventListener('astro:page-load', runLoader);
 </script>

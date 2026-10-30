@@ -3,6 +3,7 @@
 @theme {
   --color-vyapo: #F59E0B;
   --color-dark: #0a0a0a;
+  --font-baloo: "Baloo 2", cursive, sans-serif;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Film grain overlay for that tactile 14islands feel */
+/* Film grain overlay */
 .noise-overlay {
   position: fixed;
   top: 0;
@@ -42,5 +43,5 @@ html,
 body,
 * {
   -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  scrollbar-width: none;     /* Firefox */
 }

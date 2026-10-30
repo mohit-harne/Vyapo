@@ -4,87 +4,87 @@ import Layout from '../layouts/Layout.astro';
 const articles = [
   {
     id: "01",
-    tag: "Supply Chain",
+    tag: "Textile Market",
     date: "OCT 2026",
     readTime: "6 min read",
-    level: "Protocol Architecture",
-    title: "The Death of Physical Bill-of-Ladings in Modern Distribution",
-    summary: "How deterministic state machines and virtual token units are reducing 14-day clearance cycles down to sub-second verifiable transfers across Indian freight corridors.",
-    stat: "99.4% Latency Drop",
-    slug: "/insights/death-of-physical-bol",
-    // Indian Highway Container Freight & Transport Hub
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
-    imgAlt: "Indian National Highway Freight Transport Logistics"
+    level: "सूरत टेक्सटाइल हब",
+    title: "सूरत के कपड़ा निर्माताओं का नया डिजिटल इन्वेंट्री मॉडल",
+    summary: "सूरत और भिवंडी के ग्रे-क्लॉथ और वीविंग यूनिट्स कैसे पारंपरिक उधारी चक्र को खत्म करके सीधे देश भर के थोक खरीदारों और रिटेलर्स से डिजिटल लेजर के जरिए जुड़ रहे हैं।",
+    stat: "40% तेज़ भुगतान",
+    slug: "/insights/surat-textile-revolution",
+    // Indian Surat / Loom Textile Factory
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+    imgAlt: "Indian Textile Weaving and Cloth Processing Mill"
   },
   {
     id: "02",
-    tag: "FinTech",
+    tag: "Retail & Kirana",
     date: "SEP 2026",
-    readTime: "9 min read",
-    level: "Market Liquidity",
-    title: "Solving the 90-Day Credit Trap for Kiranas & Wholesalers",
-    summary: "Bridging the liquidity gap across unorganized retail channels via programmatic ledger underwriting and automated invoice escrow for local merchant storefronts.",
-    stat: "₹18M+ Float Unlocked",
-    slug: "/insights/credit-trap-kiranas",
-    // Traditional Indian Wholesale / Kirana Retail Market
+    readTime: "8 min read",
+    level: "खुदरा व्यापार",
+    title: "किराना और रिटेल काउंटरों की 60-दिन की उधारी का समाधान",
+    summary: "स्थानीय किराना और फुटकर व्यापारियों के लिए वर्किंग कैपिटल का संकट: डिजिटल स्टॉक और डायरेक्ट व्होलसेल सप्लाई कैसे रिटेलर्स की हर महीने की वर्किंग कैपिटल को सुरक्षित बना रही है।",
+    stat: "₹15 लाख+ फ्लोट अनलॉक",
+    slug: "/insights/kirana-retail-credit-cycle",
+    // Authentic Indian Kirana Store & Busy Merchant Street
     image: "https://images.unsplash.com/photo-1506484381205-f7945653044d?auto=format&fit=crop&w=800&q=80",
-    imgAlt: "Traditional Indian Merchant Bazaar and Wholesale Market"
+    imgAlt: "Traditional Indian Retail Kirana and Merchant Bazaar"
   },
   {
     id: "03",
-    tag: "Engineering",
+    tag: "Manufacturing",
     date: "AUG 2026",
-    readTime: "12 min read",
-    level: "Distributed Systems",
-    title: "Offline-First Sync Protocols for Semi-Connected Terminals",
-    summary: "Inside our conflict-free replicated data type (CRDT) engine powering handheld POS devices across Tier-3 industrial warehouse corridors and mandi yards.",
-    stat: "Zero Ledger Collision",
-    slug: "/insights/offline-first-crdt",
-    // Indian Industrial Corridor & Manufacturing Assembly
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-    imgAlt: "Tier-2 Industrial Manufacturing and Distribution Facility"
+    readTime: "10 min read",
+    level: "इंडस्ट्रियल प्रोडक्शन",
+    title: "टियर-2 शहरों में फैक्ट्रियों और असेंबली यूनिट्स का ऑन-साइट ऑडिट",
+    summary: "कच्चे माल की खरीद से लेकर तैयार माल की टेस्टिंग तक—जब छोटे मैन्युफैक्चरर्स अपनी उत्पादन क्षमता को पारदर्शी वीडियो और डेटा से दिखाते हैं, तो डिस्ट्रीब्यूटर नेटवर्क दोगुना होता है।",
+    stat: "100% वेरिफाइड स्टॉक",
+    slug: "/insights/tier-2-manufacturing-audit",
+    // Heavy Engineering & Industrial Plant India
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
+    imgAlt: "Indian Heavy Industrial Corridor & Metal Assembly Plant"
   },
   {
     id: "04",
-    tag: "Operations",
+    tag: "Agri-Wholesale",
     date: "JUL 2026",
-    readTime: "5 min read",
-    level: "Warehouse Logistics",
-    title: "Synchronizing Virtual Manifests with Physical Freight",
-    summary: "Algorithmic reconciliations between digital dock manifests and real-time weighbridge IoT telemetry at regional distribution centers in Maharashtra & Gujarat.",
-    stat: "100% Audit Precision",
-    slug: "/insights/virtual-manifest-sync",
-    // Modern Indian FMCG Fulfilment & Logistics Warehouse
-    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80",
-    imgAlt: "Modern Wholesale Warehouse and Pallet Storage in India"
+    readTime: "7 min read",
+    level: "अनाज मंडी व तेल मिल",
+    title: "विदर्भ और मध्य भारत की मंडियों में डिजिटल फ्रेट और डायरेक्ट डिस्ट्रीब्यूशन",
+    summary: "सोयाबीन, दाल और तेल मिलों से निकलने वाले थोक कंसाइनमेंट को नेशनल हाईवे कॉरिडोर और सीधे वेयरहाउस डिपो से जोड़ने की सटीक ग्राउंड रिपोर्ट।",
+    stat: "शून्य लेजर मिसमैच",
+    slug: "/insights/agri-mandi-direct-logistics",
+    // Indian Highway Freight & Warehouse Logistics
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+    imgAlt: "Indian National Highway Freight Transport Logistics"
   }
 ];
 
-const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering", "Operations"];
+const categories = ["All Publications", "Textile", "Manufacturing", "Retail / Kirana", "Agri-Wholesale"];
 ---
 
-<Layout title="Insights & Technical Research | Vyapo">
-  <div class="relative w-full max-w-full overflow-x-clip bg-transparent text-white selection:bg-vyapo selection:text-black">
+<Layout title="Industry Insights & Research | Vyaparnama">
+  <div class="relative w-full max-w-full overflow-x-clip bg-transparent text-white selection:bg-[#FF4D00] selection:text-white">
     
-    <!-- Ambient Vyapo Amber Glow Spots -->
-    <div class="absolute -top-32 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-vyapo/10 rounded-full blur-[130px] pointer-events-none mix-blend-screen -z-10"></div>
-    <div class="absolute top-1/2 left-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none mix-blend-screen -z-10"></div>
+    <!-- Ambient Vyapo Vermilion Glow Spots -->
+    <div class="absolute -top-32 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-[#FF4D00]/10 rounded-full blur-[130px] pointer-events-none mix-blend-screen -z-10"></div>
+    <div class="absolute top-1/2 left-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-[#FF4D00]/10 rounded-full blur-[140px] pointer-events-none mix-blend-screen -z-10"></div>
 
     <section class="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 sm:pt-36 pb-24 relative z-10 box-border">
       
-      <!-- HERO HEADER -->
+      <!-- HERO HEADER (Kept In English/Monospace Exactly As Requested) -->
       <div class="max-w-4xl mb-12 sm:mb-16">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[11px] uppercase tracking-[0.25em] text-vyapo mb-5 blog-header-elem">
-          <span class="w-1.5 h-1.5 rounded-full bg-vyapo animate-ping"></span>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[11px] uppercase tracking-[0.25em] text-[#FF4D00] mb-5 blog-header-elem">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#FF4D00] animate-ping"></span>
           Engineering & Commerce Dispatch
         </div>
         <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[0.94] blog-header-elem">
           Industry <br/>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-vyapo">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#FF4D00]">
             Insights & Research.
           </span>
         </h1>
-        <p class="text-white/60 text-base sm:text-xl font-light mt-5 leading-relaxed blog-header-elem max-w-2xl">
+        <p class="text-white/60 text-base sm:text-xl font-light mt-5 leading-relaxed blog-header-elem max-w-2xl font-mono">
           Deep dives into Indian supply chain corridors, retail credit underwriting, and distributed inventory infrastructure.
         </p>
       </div>
@@ -93,9 +93,9 @@ const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering"
       <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-10 border-b border-white/10 no-scrollbar blog-header-elem">
         {categories.map((cat, i) => (
           <button 
-            class={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-300 whitespace-nowrap cursor-none ${
+            class={`px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-300 whitespace-nowrap cursor-default ${
               i === 0 
-                ? 'bg-vyapo text-black font-bold shadow-[0_0_15px_rgba(245,158,11,0.3)]' 
+                ? 'bg-[#FF4D00] text-white font-bold shadow-[0_0_15px_rgba(255,77,0,0.4)]' 
                 : 'bg-white/[0.03] text-white/60 hover:text-white border border-white/10 hover:border-white/30'
             }`}
           >
@@ -109,72 +109,74 @@ const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering"
         {articles.map((item) => (
           <a
             href={item.slug}
-            class="article-item block group py-8 sm:py-10 border-b border-white/10 relative cursor-none transition-all duration-500 hover:bg-white/[0.015] px-3 sm:px-5 -mx-3 sm:-mx-5 rounded-2xl"
+            class="article-item block group py-8 sm:py-10 border-b border-white/10 relative cursor-default transition-all duration-500 hover:bg-white/[0.015] px-3 sm:px-5 -mx-3 sm:-mx-5 rounded-2xl"
             data-stat={item.stat}
             data-level={item.level}
             data-read={item.readTime}
             data-img={item.image}
           >
-            <!-- Amber Left Border Glow Accent on Hover -->
-            <div class="absolute left-0 top-0 bottom-0 w-[2px] bg-vyapo scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+            <!-- Orange Left Border Glow Accent on Hover -->
+            <div class="absolute left-0 top-0 bottom-0 w-[2px] bg-[#FF4D00] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-8 items-center">
               
-              <!-- IMAGE PREVIEW (Mobile inline & Desktop thumbnail) -->
+              <!-- IMAGE PREVIEW -->
               <div class="md:col-span-4 lg:col-span-3">
-                <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[4/3] rounded-xl overflow-hidden bg-black/40 border border-white/10 group-hover:border-vyapo/40 transition-colors duration-500">
+                <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[4/3] rounded-xl overflow-hidden bg-black/40 border border-white/10 group-hover:border-[#FF4D00]/40 transition-colors duration-500">
                   <img 
                     src={item.image} 
                     alt={item.imgAlt} 
                     class="article-thumbnail w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out"
                     loading="lazy"
                   />
-                  <!-- Dark Vignette & Amber Overlay Tint -->
+                  <!-- Vignette & Warm Tint -->
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-                  <div class="absolute inset-0 bg-vyapo/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-color"></div>
+                  <div class="absolute inset-0 bg-[#FF4D00]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none mix-blend-color"></div>
 
-                  <!-- Tag pill on top of image -->
+                  <!-- Tag Pill -->
                   <div class="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md border border-white/15 text-[10px] font-mono uppercase tracking-widest text-white/80">
                     {item.tag}
                   </div>
                 </div>
               </div>
 
-              <!-- CONTENT COLUMN -->
+              <!-- CONTENT COLUMN (HINDI WITH BALOO 2 FONT) -->
               <div class="md:col-span-6 lg:col-span-7 title-container transition-transform duration-300 group-hover:translate-x-1 sm:group-hover:translate-x-2">
-                <div class="flex items-center gap-3 mb-2">
-                  <span class="font-mono text-xs font-bold text-vyapo">
+                <div class="flex items-center gap-3 mb-2 font-mono">
+                  <span class="text-xs font-bold text-[#FF4D00]">
                     {item.id}
                   </span>
-                  <span class="text-xs font-mono text-white/40 tracking-wider">
+                  <span class="text-xs text-white/40 tracking-wider">
                     {item.date}
                   </span>
                 </div>
 
-                <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-white group-hover:text-vyapo transition-colors tracking-tight leading-snug mb-2">
+                <!-- Baloo 2 applied for Heading -->
+                <h3 class="font-baloo text-2xl sm:text-3xl lg:text-[28px] font-bold text-white group-hover:text-[#FF4D00] transition-colors tracking-tight leading-snug mb-2">
                   {item.title}
                 </h3>
                 
-                <p class="text-white/50 text-xs sm:text-sm font-light leading-relaxed line-clamp-2 sm:line-clamp-3">
+                <!-- Baloo 2 applied for Hindi Summary -->
+                <p class="font-baloo text-white/60 text-sm sm:text-base font-normal leading-relaxed line-clamp-2 sm:line-clamp-3">
                   {item.summary}
                 </p>
                 
                 <!-- Informative Metric Chips -->
                 <div class="flex flex-wrap items-center gap-3 mt-4 font-mono text-[10px] sm:text-[11px] text-white/40">
-                  <span class="flex items-center gap-1.5 text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-md border border-emerald-400/20">
+                  <span class="flex items-center gap-1.5 text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-md border border-emerald-400/20 font-baloo">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                     {item.stat}
                   </span>
                   <span>•</span>
                   <span>{item.readTime}</span>
                   <span>•</span>
-                  <span class="text-white/70">{item.level}</span>
+                  <span class="text-white/70 font-baloo">{item.level}</span>
                 </div>
               </div>
 
               <!-- ACTION ARROW (Desktop only) -->
               <div class="md:col-span-2 hidden md:flex items-center justify-end">
-                <div class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/60 group-hover:text-black group-hover:bg-vyapo group-hover:border-vyapo transition-all duration-300 transform group-hover:rotate-45 shadow-lg">
+                <div class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/60 group-hover:text-white group-hover:bg-[#FF4D00] group-hover:border-[#FF4D00] transition-all duration-300 transform group-hover:rotate-45 shadow-lg">
                   <span class="text-sm font-bold">↗</span>
                 </div>
               </div>
@@ -187,14 +189,14 @@ const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering"
       <!-- DESKTOP GSAP FLOATING TELEMETRY INSPECTOR -->
       <div 
         id="article-floating-inspector" 
-        class="fixed top-0 left-0 pointer-events-none opacity-0 z-50 rounded-xl bg-black/90 border border-vyapo/30 p-3.5 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.9)] hidden lg:block -translate-x-1/2 -translate-y-1/2 min-w-[220px]"
+        class="fixed top-0 left-0 pointer-events-none opacity-0 z-50 rounded-xl bg-black/95 border border-[#FF4D00]/40 p-3.5 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.9)] hidden lg:block -translate-x-1/2 -translate-y-1/2 min-w-[220px]"
       >
-        <div class="flex items-center justify-between text-[10px] font-mono text-vyapo uppercase tracking-wider mb-1.5 pb-1 border-b border-white/10">
+        <div class="flex items-center justify-between text-[10px] font-mono text-[#FF4D00] uppercase tracking-wider mb-1.5 pb-1 border-b border-white/10">
           <span>Corridor Telemetry</span>
           <span id="inspect-read">--</span>
         </div>
-        <p id="inspect-level" class="text-xs font-bold text-white uppercase tracking-tight mb-1">Architecture</p>
-        <div class="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5">
+        <p id="inspect-level" class="text-xs font-bold text-white uppercase tracking-tight mb-1 font-baloo">Architecture</p>
+        <div class="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5 font-baloo">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
           <span id="inspect-stat">Verified Metric</span>
         </div>
@@ -210,14 +212,14 @@ const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering"
   gsap.registerPlugin(ScrollTrigger);
 
   const initBlogAnimations = () => {
-    // 1. Header entrance animation
+    // 1. Header entrance
     gsap.fromTo(
       '.blog-header-elem',
       { y: 30, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.1 }
     );
 
-    // 2. Article rows stagger entrance on first page load
+    // 2. Article rows stagger entrance
     const items = document.querySelectorAll('.article-item');
     if (!items.length) return;
 
@@ -244,7 +246,7 @@ const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering"
       items.forEach((item) => {
         const thumb = item.querySelector('.article-thumbnail');
         const title = item.querySelector('h3');
-        const amberLine = item.querySelector('.absolute.left-0');
+        const orangeLine = item.querySelector('.absolute.left-0');
         const overlay = item.querySelector('.mix-blend-color');
 
         ScrollTrigger.create({
@@ -259,15 +261,13 @@ const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering"
         });
 
         function activateCard() {
-          // Glow and background highlight
           gsap.to(item, {
             backgroundColor: 'rgba(255, 255, 255, 0.04)',
-            borderColor: 'rgba(245, 158, 11, 0.4)',
+            borderColor: 'rgba(255, 77, 0, 0.4)',
             duration: 0.4,
             ease: 'power2.out'
           });
 
-          // Un-grayscale and saturate thumbnail
           if (thumb) {
             gsap.to(thumb, {
               filter: 'grayscale(0%) contrast(100%) brightness(100%)',
@@ -277,17 +277,14 @@ const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering"
             });
           }
 
-          // Highlight title in Vyapo amber
           if (title) {
-            gsap.to(title, { color: '#F59E0B', x: 4, duration: 0.3 });
+            gsap.to(title, { color: '#FF4D00', x: 4, duration: 0.3 });
           }
 
-          // Expand amber left accent bar
-          if (amberLine) {
-            gsap.to(amberLine, { scaleY: 1, duration: 0.35, ease: 'power2.out' });
+          if (orangeLine) {
+            gsap.to(orangeLine, { scaleY: 1, duration: 0.35, ease: 'power2.out' });
           }
 
-          // Warm color wash over photo
           if (overlay) {
             gsap.to(overlay, { opacity: 1, duration: 0.4 });
           }
@@ -314,8 +311,8 @@ const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering"
             gsap.to(title, { color: '#FFFFFF', x: 0, duration: 0.3 });
           }
 
-          if (amberLine) {
-            gsap.to(amberLine, { scaleY: 0, duration: 0.3, ease: 'power2.in' });
+          if (orangeLine) {
+            gsap.to(orangeLine, { scaleY: 0, duration: 0.3, ease: 'power2.in' });
           }
 
           if (overlay) {
@@ -325,7 +322,7 @@ const categories = ["All Publications", "Supply Chain", "FinTech", "Engineering"
       });
     }
 
-    // 4. Desktop Floating Telemetry Inspector via Mouse Tracking
+    // 4. Desktop Floating Telemetry Inspector
     if (window.matchMedia('(pointer: fine)').matches) {
       const inspector = document.getElementById('article-floating-inspector');
       const inspectStat = document.getElementById('inspect-stat');

@@ -1,0 +1,444 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const perks = [
+  {
+    code: 'P-01',
+    title: 'High-Impact Ownership',
+    desc: 'Zero corporate bureaucracy. Take direct responsibility over core modules, state synchronizers, and merchant-facing tools.',
+    stat: 'Direct Authority'
+  },
+  {
+    code: 'P-02',
+    title: 'Market-Leading Stakes',
+    desc: 'Competitive base compensation paired with meaningful long-term upside in building regional commerce rails.',
+    stat: 'Tier-1 Package'
+  },
+  {
+    code: 'P-03',
+    title: 'Autonomous Culture',
+    desc: 'Flexible hybrid workflows, dedicated engineering budgets, and equipment designed for uninterrupted deep work.',
+    stat: 'Flexible Sync'
+  },
+  {
+    code: 'P-04',
+    title: 'Real Economy Scale',
+    desc: 'Write software that directly impacts physical factories, mandis, and storefront supply chains across India.',
+    stat: 'National Scale'
+  }
+];
+
+const jobs = [
+  {
+    id: 'ENG-01',
+    dept: 'Engineering',
+    title: 'Senior Frontend / UI Systems Architect',
+    type: 'Full-Time',
+    location: 'Pune / Remote (MH)',
+    experience: '3+ Years',
+    summary: 'Lead client-facing applications using Astro, Next.js, Tailwind, GSAP, and Three.js. Responsible for building snappy telemetry dashboards and digital inventory portals for merchants.',
+    deliverables: [
+      'Maintain sub-100ms render speeds across low-spec field devices',
+      'Architect robust offline-first synchronization with CRDT ledgers',
+      'Translate industrial metrics into fluid interactive visualizations'
+    ],
+    mailtoSubject: 'Application: Senior Frontend / UI Systems Architect [ENG-01]'
+  },
+  {
+    id: 'ENG-02',
+    dept: 'Engineering',
+    title: 'Backend & Distributed Systems Engineer',
+    type: 'Full-Time',
+    location: 'Pune / Hybrid',
+    experience: '2+ Years',
+    summary: 'Build high-concurrency order settlement layers and IoT weighbridge telemetry ingest engines connecting factories with wholesale networks.',
+    deliverables: [
+      'Scale real-time WebSocket state distribution for multi-depot dispatches',
+      'Design reliable event-driven pipelines using Node.js, Go, or Rust',
+      'Enforce atomic inventory updates across multi-tier trade nodes'
+    ],
+    mailtoSubject: 'Application: Backend & Distributed Systems Engineer [ENG-02]'
+  },
+  {
+    id: 'OPS-01',
+    dept: 'Operations',
+    title: 'Mandi Alliances & Field Operations Lead',
+    type: 'On-Field',
+    location: 'Amravati / Vidarbha Corridor',
+    experience: '2+ Years',
+    summary: 'Directly interface with mill owners, APMC grain traders, and wholesale depot chiefs. Onboard manufacturers onto Vyapo’s digital inventory rails.',
+    deliverables: [
+      'Conduct ground-level inventory audits and workflow discovery',
+      'Establish strategic partnerships with regional wholesale associations',
+      'Lead operational dispatch troubleshooting at local transit yards'
+    ],
+    mailtoSubject: 'Application: Mandi Alliances & Field Operations Lead [OPS-01]'
+  },
+  {
+    id: 'MEDIA-01',
+    dept: 'Media & Storytelling',
+    title: 'Documentary Cinematographer & Video Editor',
+    type: 'Full-Time / Field',
+    location: 'Maharashtra / Gujarat Project Sites',
+    experience: '1+ Years',
+    summary: 'Capture cinematic ground-zero stories for Vyaparnama. Film real trade operations inside foundries, textile mills, and midnight cargo corridors.',
+    deliverables: [
+      'Operate cinema rigs, gimbals, and drone gear in dynamic factory spaces',
+      'Produce fast-paced documentary reels and long-form YouTube case studies',
+      'Translate raw industrial processes into compelling merchant narratives'
+    ],
+    mailtoSubject: 'Application: Documentary Cinematographer & Video Editor [MEDIA-01]'
+  }
+];
+
+const departments = ['All Roles', 'Engineering', 'Operations', 'Media & Storytelling'];
+---
+
+<Layout title="Careers | Join Vyapo">
+  <!-- Container is transparent so the global 3D canvas is visible -->
+  <div class="relative w-full max-w-full overflow-x-clip bg-transparent text-white selection:bg-[#F59E0B] selection:text-black">
+    
+    <!-- Subtle Ambient Glows that blend with your 3D Scene -->
+    <div class="absolute -top-36 right-10 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-[#F59E0B]/10 rounded-full blur-[140px] pointer-events-none mix-blend-screen -z-10"></div>
+    <div class="absolute top-[40%] -left-32 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-amber-500/10 rounded-full blur-[150px] pointer-events-none mix-blend-screen -z-10"></div>
+
+    <section class="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-28 sm:pt-36 pb-24 relative z-10 box-border">
+      
+      <!-- HERO HEADER -->
+      <div class="max-w-4xl mb-16 sm:mb-20">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 font-mono text-[11px] uppercase tracking-[0.25em] text-[#F59E0B] mb-6 careers-header-elem backdrop-blur-md">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Careers at Vyapo
+        </div>
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[0.92] careers-header-elem">
+          Join the <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-[#F59E0B]">
+            Team & Mission.
+          </span>
+        </h1>
+        <p class="text-white/60 text-base sm:text-xl font-light mt-6 leading-relaxed max-w-2xl font-mono careers-header-elem">
+          We are architecting the modern commerce layer for Indian industry. Explore open opportunities across engineering, field logistics, and storytelling.
+        </p>
+
+        <!-- Stats Counter Strip -->
+        <div class="flex flex-wrap items-center gap-6 sm:gap-12 mt-10 pt-8 border-t border-white/10 font-mono text-xs text-white/50 careers-header-elem">
+          <div>
+            <span class="block text-xl sm:text-2xl font-black text-white">{jobs.length} Active</span>
+            <span class="text-[11px] text-white/40 uppercase">Open Positions</span>
+          </div>
+          <div class="h-8 w-px bg-white/10 hidden sm:block"></div>
+          <div>
+            <span class="block text-xl sm:text-2xl font-black text-[#F59E0B]">Hybrid / Field</span>
+            <span class="text-[11px] text-white/40 uppercase">Flexible Working</span>
+          </div>
+          <div class="h-8 w-px bg-white/10 hidden sm:block"></div>
+          <div>
+            <span class="block text-xl sm:text-2xl font-black text-emerald-400">Direct Dispatch</span>
+            <span class="text-[11px] text-white/40 uppercase">info@vyapo.com</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 02: CULTURE & PERKS -->
+      <div class="mb-20 sm:mb-28">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-white/10 gap-3">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-[#F59E0B] block mb-1.5">// Culture & Execution</span>
+            <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white">Why Join Vyapo</h2>
+          </div>
+          <p class="font-mono text-xs text-white/40 max-w-xs sm:text-right">
+            High ownership. Transparent workflows. Real-world business impact.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 perks-grid">
+          {perks.map((p) => (
+            <div class="perk-card p-6 rounded-2xl bg-white/[0.02] backdrop-blur-md border border-white/10 hover:border-[#F59E0B]/50 transition-all duration-300 flex flex-col justify-between group shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <div>
+                <div class="flex items-center justify-between font-mono text-xs text-white/40 mb-4">
+                  <span class="text-[#F59E0B] font-bold">{p.code}</span>
+                  <span class="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px]">{p.stat}</span>
+                </div>
+                <h3 class="text-lg font-bold uppercase tracking-tight text-white group-hover:text-[#F59E0B] transition-colors mb-2.5">
+                  {p.title}
+                </h3>
+                <p class="text-white/60 text-xs sm:text-sm font-light leading-relaxed">
+                  {p.desc}
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-white/5 font-mono text-[11px] text-white/30 flex items-center justify-between">
+                <span>Standard Protocol</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]"></span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- SECTION 03: OPEN ROLES & DIRECT APPLICATION RAIL (With top gap and subtle separator) -->
+      <div id="open-roles" class="mb-24 pt-12 sm:pt-16 border-t border-white/10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-white/10 gap-4">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-[#F59E0B] block mb-1.5">// Current Deployments</span>
+            <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">Open Positions</h2>
+          </div>
+          <p class="font-mono text-xs text-white/50 max-w-sm">
+            Click any position to review deliverables and send your application directly to info@vyapo.com.
+          </p>
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar filter-strip">
+          {departments.map((dept, idx) => (
+            <button
+              type="button"
+              data-dept={dept}
+              class={`filter-btn px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-300 whitespace-nowrap cursor-none ${
+                idx === 0
+                  ? 'bg-[#F59E0B] text-black font-bold shadow-[0_0_15px_rgba(245,158,11,0.35)] active-filter'
+                  : 'bg-white/[0.03] text-white/60 hover:text-white border border-white/10 hover:border-white/30'
+              }`}
+            >
+              {dept}
+            </button>
+          ))}
+        </div>
+
+        <!-- Position Listings -->
+        <div class="space-y-4 positions-container">
+          {jobs.map((job) => (
+            <div
+              class="job-card rounded-2xl bg-white/[0.02] backdrop-blur-md border border-white/10 hover:border-white/25 transition-all duration-300 overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.3)]"
+              data-department={job.dept}
+            >
+              <!-- Card Header Row (Click to toggle expansion) -->
+              <div class="job-toggle-trigger p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-none select-none">
+                <div class="space-y-2">
+                  <div class="flex flex-wrap items-center gap-3 font-mono text-[11px]">
+                    <span class="text-[#F59E0B] font-bold">{job.id}</span>
+                    <span class="text-white/30">•</span>
+                    <span class="text-white/60 px-2 py-0.5 rounded bg-white/5 border border-white/10">{job.dept}</span>
+                    <span class="text-white/30">•</span>
+                    <span class="text-emerald-400">{job.type}</span>
+                  </div>
+                  <h3 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-white group-hover:text-[#F59E0B] transition-colors">
+                    {job.title}
+                  </h3>
+                </div>
+
+                <div class="flex items-center justify-between md:justify-end gap-6 pt-3 md:pt-0 border-t md:border-none border-white/5 font-mono text-xs text-white/50">
+                  <div class="flex items-center gap-3">
+                    <span>📍 {job.location}</span>
+                    <span>⌛ {job.experience}</span>
+                  </div>
+                  <div class="chevron-icon w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/60 transition-transform duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                      <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Collapsed Details Drawer (hidden by default) -->
+              <div class="job-drawer max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-out border-t border-transparent">
+                <div class="p-6 sm:p-8 bg-black/20 backdrop-blur-sm space-y-6">
+                  
+                  <div>
+                    <h4 class="font-mono text-xs uppercase tracking-widest text-[#F59E0B] mb-2">Role Scope</h4>
+                    <p class="text-white/70 text-sm sm:text-base font-light leading-relaxed max-w-3xl">
+                      {job.summary}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 class="font-mono text-xs uppercase tracking-widest text-white/40 mb-3">Key Focus & Expected Output</h4>
+                    <ul class="space-y-2 max-w-3xl">
+                      {job.deliverables.map((item) => (
+                        <li class="flex items-start gap-3 text-xs sm:text-sm text-white/60 font-light">
+                          <span class="text-[#F59E0B] mt-0.5">▪</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <!-- Application Callout Box -->
+                  <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="font-mono text-xs text-white/50">
+                      <div>Send resume, previous work/GitHub, or reel directly to:</div>
+                      <div class="text-white font-bold text-sm tracking-wide mt-0.5">info@vyapo.com</div>
+                    </div>
+
+                    <a
+                      href={`mailto:info@vyapo.com?subject=${encodeURIComponent(job.mailtoSubject)}&body=${encodeURIComponent(`Hi Vyapo Team,\n\nI am applying for the position of ${job.title} (${job.id}).\n\nFull Name: \nContact Number: \nCurrent Location: \nPortfolio / GitHub / LinkedIn: \n\nA brief note on why I want to work with Vyapo:\n\n`)}`}
+                      class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#F59E0B] text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-amber-400 transition-all shadow-[0_0_20px_rgba(245,158,11,0.3)] cursor-none"
+                    >
+                      <span>Apply For This Position</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- SECTION 04: GENERAL APPLICATION / COLD DISPATCH BANNER -->
+      <div class="p-8 sm:p-12 rounded-3xl bg-white/[0.02] backdrop-blur-md border border-white/10 relative overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+        <div class="absolute top-0 right-0 w-80 h-80 bg-[#F59E0B]/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+
+        <div class="max-w-2xl space-y-4">
+          <div class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#F59E0B]">
+            <span>// Open Deployment</span>
+          </div>
+          <h3 class="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white">
+            Don’t See Your Exact Role?
+          </h3>
+          <p class="text-white/60 text-sm sm:text-base font-light leading-relaxed">
+            If you are an exceptional engineer, supply chain analyst, or field documentary maker eager to transform how Indian commerce moves, send us your thesis.
+          </p>
+          <div class="pt-4">
+            <a
+              href={`mailto:info@vyapo.com?subject=${encodeURIComponent('Open Application: Custom Value Contribution')}&body=${encodeURIComponent('Hi Vyapo Leadership,\n\nI want to work with Vyapo. Here is what I build, what I have executed previously, and how I can accelerate the network:\n\nName: \nContact: \nWork Links: \n')}`}
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 hover:border-[#F59E0B] hover:text-[#F59E0B] font-mono text-xs uppercase tracking-wider transition-colors duration-300 cursor-none"
+            >
+              <span>Dispatch Cold Application to info@vyapo.com</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initCareersMotion = () => {
+    // 1. Header elements entrance
+    gsap.fromTo(
+      '.careers-header-elem',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power3.out', delay: 0.1 }
+    );
+
+    // 2. Culture & Perks cards entrance
+    const perkCards = document.querySelectorAll('.perk-card');
+    if (perkCards.length) {
+      gsap.fromTo(
+        perkCards,
+        { y: 35, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.7,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.perks-grid',
+            start: 'top 85%',
+          }
+        }
+      );
+    }
+
+    // 3. Interactive Accordion for Open Roles
+    const jobCards = document.querySelectorAll('.job-card');
+    jobCards.forEach((card) => {
+      const trigger = card.querySelector('.job-toggle-trigger');
+      const drawer = card.querySelector('.job-drawer') as HTMLElement;
+      const chevron = card.querySelector('.chevron-icon') as HTMLElement;
+
+      if (!trigger || !drawer) return;
+
+      // Ensure explicit initial collapsed state
+      drawer.style.maxHeight = '0px';
+      drawer.style.opacity = '0';
+
+      trigger.addEventListener('click', () => {
+        const isExpanded = drawer.style.maxHeight !== '0px' && drawer.style.maxHeight !== '';
+
+        // Close all other drawers
+        jobCards.forEach((other) => {
+          const otherDrawer = other.querySelector('.job-drawer') as HTMLElement;
+          const otherChevron = other.querySelector('.chevron-icon') as HTMLElement;
+          if (otherDrawer && otherDrawer !== drawer) {
+            otherDrawer.style.maxHeight = '0px';
+            otherDrawer.style.opacity = '0';
+            otherDrawer.classList.remove('border-white/10');
+            otherDrawer.classList.add('border-transparent');
+            if (otherChevron) otherChevron.style.transform = 'rotate(0deg)';
+          }
+        });
+
+        // Toggle current drawer
+        if (isExpanded) {
+          drawer.style.maxHeight = '0px';
+          drawer.style.opacity = '0';
+          drawer.classList.remove('border-white/10');
+          drawer.classList.add('border-transparent');
+          if (chevron) chevron.style.transform = 'rotate(0deg)';
+        } else {
+          drawer.style.maxHeight = `${drawer.scrollHeight + 60}px`;
+          drawer.style.opacity = '1';
+          drawer.classList.remove('border-transparent');
+          drawer.classList.add('border-white/10');
+          if (chevron) chevron.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // 4. Department Filter Logic
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const selectedDept = btn.getAttribute('data-dept');
+
+        // Toggle active chip style
+        filterButtons.forEach((b) => {
+          b.classList.remove('bg-[#F59E0B]', 'text-black', 'font-bold', 'shadow-[0_0_15px_rgba(245,158,11,0.35)]', 'active-filter');
+          b.classList.add('bg-white/[0.03]', 'text-white/60', 'border', 'border-white/10');
+        });
+
+        btn.classList.add('bg-[#F59E0B]', 'text-black', 'font-bold', 'shadow-[0_0_15px_rgba(245,158,11,0.35)]', 'active-filter');
+        btn.classList.remove('bg-white/[0.03]', 'text-white/60', 'border', 'border-white/10');
+
+        // Filter role cards with GSAP
+        jobCards.forEach((card) => {
+          const cardDept = card.getAttribute('data-department');
+          const el = card as HTMLElement;
+
+          if (selectedDept === 'All Roles' || cardDept === selectedDept) {
+            gsap.to(el, {
+              opacity: 1,
+              scale: 1,
+              height: 'auto',
+              duration: 0.35,
+              display: 'block',
+              ease: 'power2.out'
+            });
+          } else {
+            gsap.to(el, {
+              opacity: 0,
+              scale: 0.98,
+              height: 0,
+              duration: 0.25,
+              display: 'none',
+              ease: 'power2.in'
+            });
+          }
+        });
+      });
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initCareersMotion);
+  document.addEventListener('astro:page-load', initCareersMotion);
+</script>

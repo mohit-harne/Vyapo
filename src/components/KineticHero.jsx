@@ -11,8 +11,8 @@ const WAYPOINTS = [
     text: "Easy Cataloging",
     badge: "Instant SKU Sync",
     desc: "Digitize physical store inventories with multi-angle barcode scanning, automated HSN code tagging, and direct WhatsApp catalog publishing.",
-    image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=400&q=80",
-    imageAlt: "Digital Handheld Scanner and Product Cataloging Terminal"
+    image: "/home/easycataloging.png",
+    imageAlt: "Indian kirana store owner checking retail inventory on mobile device"
   },
   {
     step: "02",
@@ -21,8 +21,8 @@ const WAYPOINTS = [
     subtext: "Connecting Merchants",
     badge: "Direct Distribution",
     desc: "Unify manufacturers, regional stockists, and local retailers under one transparent ledger with verified escrow and dynamic trade credit.",
-    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=400&q=80",
-    imageAlt: "Wholesale Merchant Network and Commercial Exchange"
+    image: "/home/simplifiedecosystem.png",
+    imageAlt: "Indian wholesale market traders collaborating and managing trade network"
   },
   {
     step: "03",
@@ -30,8 +30,18 @@ const WAYPOINTS = [
     text: "Easy Sourcing",
     badge: "Zero Middleman",
     desc: "Direct-from-factory procurement pipelines eliminating intermediary markups, with guaranteed bill-of-lading transit verification.",
-    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=400&q=80",
-    imageAlt: "Freight Transport and Direct Logistics Procurement"
+    image: "/home/easysourcing.png",
+    imageAlt: "Indian warehouse distribution depot and logistics freight loading"
+  },
+  {
+    step: "04",
+    tag: "Verification",
+    text: "Verified Suppliers",
+    subtext: "Quality & Compliance",
+    badge: "GST & KYC Audited",
+    desc: "Source with confidence through 100% physically inspected facilities, active GSTIN compliance checks, and validated manufacturer track records.",
+    image: "/home/verifiedsuppliers.png",
+    imageAlt: "Indian factory supervisor and verified manufacturer conducting on-site quality inspection"
   }
 ];
 
@@ -216,43 +226,47 @@ export default function KineticHero() {
                 Trade On The Move.
               </h3>
               <p className="text-white/60 text-sm leading-relaxed mb-8 relative z-10 font-light">
-                Instant virtual inventory allocations, digital invoice discounting, and instant stock verification right from your pocket.
+                Instant digital inventory allocations, digital invoice discounting, and instant stock verification right from your pocket.
               </p>
 
-              {/* App Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 relative z-10 mb-6">
-                <a
-                  href="/download"
-                  className="cursor-none flex-1 flex items-center justify-center gap-3 px-4 py-3.5 rounded-xl bg-black/60 hover:bg-black/85 border border-white/15 hover:border-[#00D3FF]/50 transition-all duration-300 group/play hover:shadow-[0_0_25px_rgba(0,211,255,0.25)] hover:-translate-y-0.5"
-                >
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg"
-                    alt="Google Play"
-                    className="w-6 h-6 object-contain flex-shrink-0 transition-transform duration-300 group-hover/play:scale-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
-                    loading="lazy"
-                  />
-                  <div className="text-left">
-                    <span className="block text-[9px] uppercase tracking-wider text-white/50 leading-none">Get it on</span>
-                    <span className="block text-xs font-bold text-white tracking-wide mt-0.5 group-hover/play:text-[#00D3FF] transition-colors">Google Play</span>
-                  </div>
-                </a>
+             {/* App Buttons */}
+<div className="flex flex-col sm:flex-row gap-3 relative z-10 mb-6">
+  <a
+    href="https://play.google.com/store/apps/details?id=com.vyapo.app&pcampaignid=web_share"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="cursor-none flex-1 flex items-center justify-center gap-3 px-4 py-3.5 rounded-xl bg-black/60 hover:bg-black/85 border border-white/15 hover:border-[#00D3FF]/50 transition-all duration-300 group/play hover:shadow-[0_0_25px_rgba(0,211,255,0.25)] hover:-translate-y-0.5"
+  >
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg"
+      alt="Google Play"
+      className="w-6 h-6 object-contain flex-shrink-0 transition-transform duration-300 group-hover/play:scale-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+      loading="lazy"
+    />
+    <div className="text-left">
+      <span className="block text-[9px] uppercase tracking-wider text-white/50 leading-none">Get it on</span>
+      <span className="block text-xs font-bold text-white tracking-wide mt-0.5 group-hover/play:text-[#00D3FF] transition-colors">Google Play</span>
+    </div>
+  </a>
 
-                <a
-                  href="/download"
-                  className="cursor-none flex-1 flex items-center justify-center gap-3 px-4 py-3.5 rounded-xl bg-black/60 hover:bg-black/85 border border-white/15 hover:border-[#007AFF]/50 transition-all duration-300 group/app hover:shadow-[0_0_25px_rgba(0,122,255,0.3)] hover:-translate-y-0.5"
-                >
-                  <img
-                    src="https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/app-store.svg"
-                    alt="App Store"
-                    className="w-6 h-6 object-contain flex-shrink-0 transition-transform duration-300 group-hover/app:scale-110 drop-shadow-[0_2px_10px_rgba(0,122,255,0.35)]"
-                    loading="lazy"
-                  />
-                  <div className="text-left">
-                    <span className="block text-[9px] uppercase tracking-wider text-white/50 leading-none">Download on</span>
-                    <span className="block text-xs font-bold text-white tracking-wide mt-0.5 group-hover/app:text-[#45A3FF] transition-colors">App Store</span>
-                  </div>
-                </a>
-              </div>
+  <a
+    href="https://apps.apple.com/in/app/vyapo/id6802982287"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="cursor-none flex-1 flex items-center justify-center gap-3 px-4 py-3.5 rounded-xl bg-black/60 hover:bg-black/85 border border-white/15 hover:border-[#007AFF]/50 transition-all duration-300 group/app hover:shadow-[0_0_25px_rgba(0,122,255,0.3)] hover:-translate-y-0.5"
+  >
+    <img
+      src="https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/app-store.svg"
+      alt="App Store"
+      className="w-6 h-6 object-contain flex-shrink-0 transition-transform duration-300 group-hover/app:scale-110 drop-shadow-[0_2px_10px_rgba(0,122,255,0.35)]"
+      loading="lazy"
+    />
+    <div className="text-left">
+      <span className="block text-[9px] uppercase tracking-wider text-white/50 leading-none">Download on</span>
+      <span className="block text-xs font-bold text-white tracking-wide mt-0.5 group-hover/app:text-[#45A3FF] transition-colors">App Store</span>
+    </div>
+  </a>
+</div>
 
               <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-white/50 relative z-10">
                 <span className="flex items-center gap-1.5">
@@ -289,7 +303,8 @@ export default function KineticHero() {
               className="min-w-[85vw] sm:min-w-[55vw] snap-center p-5 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md flex flex-col justify-between"
             >
               <div>
-                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-4 bg-black/50 border border-white/10">
+                {/* Mobile Image: 4/3 aspect ratio with minimum height for larger visual presence */}
+                <div className="relative w-full aspect-[4/3] min-h-[220px] rounded-xl overflow-hidden mb-4 bg-black/50 border border-white/10">
                   <img
                     src={wp.image}
                     alt={wp.imageAlt}
@@ -297,7 +312,7 @@ export default function KineticHero() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                  <span className="absolute bottom-2 left-2 font-mono text-[9px] text-amber-400 bg-black/80 px-2 py-0.5 rounded border border-amber-400/20">
+                  <span className="absolute bottom-2.5 left-2.5 font-mono text-[10px] text-amber-400 bg-black/85 px-2.5 py-1 rounded border border-amber-400/20">
                     {wp.badge}
                   </span>
                 </div>
@@ -330,13 +345,13 @@ export default function KineticHero() {
           <div
             ref={mobileProgressRef}
             className="h-full bg-amber-500 rounded-full transition-all duration-150"
-            style={{ width: '33.33%' }}
+            style={{ width: '25%' }}
           />
         </div>
       </section>
 
       {/* ============================================================== */}
-      {/* DESKTOP WAYPOINTS STREAM (With GSAP Line Trace & Mini Thumbnails) */}
+      {/* DESKTOP WAYPOINTS STREAM (With GSAP Line Trace & Enlarged Image) */}
       {/* ============================================================== */}
       <div className="hidden lg:block max-w-[1400px] mx-auto px-12 pt-8 pb-20">
         <div className="space-y-4">
@@ -356,31 +371,31 @@ export default function KineticHero() {
                   <span className="font-mono text-3xl xl:text-4xl font-black text-amber-500/30 group-hover:text-amber-500 transition-colors duration-300">
                     {wp.step}
                   </span>
-                  <span className="px-2 py-0.5 rounded-full bg-white/[0.03] border border-white/10 font-mono text-[10px] uppercase tracking-wider text-white/50">
+                  <span className="px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/10 font-mono text-[10px] uppercase tracking-wider text-white/50">
                     {wp.tag}
                   </span>
                 </div>
 
-                {/* Compact Thumbnail Frame (110px x 68px) */}
-                <div className="col-span-2">
-                  <div className="w-28 h-16 rounded-xl overflow-hidden bg-black/60 border border-white/10 relative shadow-md group-hover:border-amber-500/40 transition-colors">
+                {/* Enlarged Image Container: Expanded to 3 columns and h-32/36 for maximum clarity */}
+                <div className="col-span-3">
+                  <div className="w-full h-32 xl:h-36 rounded-xl overflow-hidden bg-black/60 border border-white/10 relative shadow-md group-hover:border-amber-500/40 transition-colors">
                     <img
                       src={wp.image}
                       alt={wp.imageAlt}
-                      className="thumb-preview w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="thumb-preview w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
 
                 {/* Headline & Subtitle */}
-                <div className="col-span-4 reveal-text">
-                  <h2 className="text-2xl xl:text-3xl font-black uppercase tracking-tight leading-snug text-white group-hover:text-amber-400 transition-colors duration-300">
+                <div className="col-span-3 reveal-text">
+                  <h2 className="text-xl xl:text-2xl font-black uppercase tracking-tight leading-snug text-white group-hover:text-amber-400 transition-colors duration-300">
                     {wp.text}
                   </h2>
                   {wp.subtext && (
-                    <span className="font-mono text-xs uppercase tracking-wider text-amber-500/80 block mt-0.5">
+                    <span className="font-mono text-xs uppercase tracking-wider text-amber-500/80 block mt-1">
                       {wp.subtext}
                     </span>
                   )}
@@ -388,7 +403,7 @@ export default function KineticHero() {
 
                 {/* Description & Badge */}
                 <div className="col-span-4 border-l border-white/10 pl-6 reveal-text flex flex-col justify-between">
-                  <p className="text-white/60 text-xs xl:text-sm leading-relaxed font-light mb-2">
+                  <p className="text-white/60 text-xs xl:text-sm leading-relaxed font-light mb-2.5">
                     {wp.desc}
                   </p>
                   <span className="font-mono text-[10px] text-emerald-400 flex items-center gap-1.5">

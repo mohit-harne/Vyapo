@@ -38,11 +38,12 @@ export default function Footer() {
   };
 
   const socials = [
-    {
-      name: 'LinkedIn',
-      href: 'https://www.linkedin.com/company/vyaparnama/?originalSubdomain=in',
-      hoverBorder: 'hover:border-[#0A66C2]/60 hover:shadow-[0_0_15px_rgba(10,102,194,0.4)]',
-      iconUrl: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linkedin.svg',
+  
+     {
+      name: 'YouTube',
+      href: 'https://www.youtube.com/@vyaparnama',
+      hoverBorder: 'hover:border-[#FF0000]/60 hover:shadow-[0_0_15px_rgba(255,0,0,0.4)]',
+      iconUrl: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/youtube.svg',
     },
     {
       name: 'Instagram',
@@ -50,17 +51,24 @@ export default function Footer() {
       hoverBorder: 'hover:border-[#E4405F]/60 hover:shadow-[0_0_15px_rgba(228,64,95,0.4)]',
       iconUrl: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/instagram.svg',
     },
-    {
-      name: 'YouTube',
-      href: 'https://www.youtube.com/@vyaparnama',
-      hoverBorder: 'hover:border-[#FF0000]/60 hover:shadow-[0_0_15px_rgba(255,0,0,0.4)]',
-      iconUrl: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/youtube.svg',
-    },
+   
     {
       name: 'Facebook',
       href: 'https://www.facebook.com/vyaparnama',
       hoverBorder: 'hover:border-[#1877F2]/60 hover:shadow-[0_0_15px_rgba(24,119,242,0.4)]',
       iconUrl: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/facebook.svg',
+    },
+      {
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/vyaparnama/?originalSubdomain=in',
+      hoverBorder: 'hover:border-[#0A66C2]/60 hover:shadow-[0_0_15px_rgba(10,102,194,0.4)]',
+      iconUrl: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linkedin.svg',
+    },
+    {
+      name: 'X (Twitter)',
+      href: 'https://x.com/VyapoHQ',
+      hoverBorder: 'hover:border-[#1DA1F2]/60 hover:shadow-[0_0_15px_rgba(29,161,242,0.4)]',
+      iconUrl: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/twitter.svg',
     },
     {
       name: 'WhatsApp',
@@ -118,8 +126,8 @@ export default function Footer() {
                 Platform
               </p>
               <div className="flex flex-col space-y-1.5 text-xs text-white/60">
-                <a href="/Services" className="cursor-none hover:text-vyapo transition-colors">Services</a>
-                <a href="/Features" className="cursor-none hover:text-vyapo transition-colors">Features</a>
+                {/* <a href="/Services" className="cursor-none hover:text-vyapo transition-colors">Services</a>
+                <a href="/Features" className="cursor-none hover:text-vyapo transition-colors">Features</a> */}
                 <a href="/download" className="cursor-none hover:text-vyapo transition-colors">Downloads</a>
                 <a href="/about" className="cursor-none hover:text-vyapo transition-colors">About</a>
                 <a href="/contact" className="cursor-none hover:text-vyapo transition-colors">Contact</a>
@@ -134,8 +142,8 @@ export default function Footer() {
                 Headquarters
               </p>
               <div className="text-xs text-white/60 space-y-0.5 font-light">
-                <p className="text-white font-medium text-[11px] sm:text-xs">Vyapo Technologies Pvt. Ltd.</p>
-                <p className="text-[11px] sm:text-xs">PrimaThink, Amravati, Maharashtra, India</p>
+                <p className="text-white font-medium text-[11px] sm:text-xs">Vishwalata Ventures Private Limited</p>
+                <p className="text-[11px] sm:text-xs">Shop No. 20, G.M. Arcade, Opposite City Council, Main Road, Paratwada – 444805</p>
                 <a href="mailto:info@vyapo.com" className="cursor-none font-mono text-vyapo hover:underline block pt-0.5 text-[11px] sm:text-xs">
                   info@vyapo.com
                 </a>

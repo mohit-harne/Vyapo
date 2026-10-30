@@ -9,25 +9,35 @@ export default function Navbar() {
   const linksRef = useRef({});
   const mobileRowsRef = useRef([]);
   const mobileBackdropRef = useRef(null);
+  const contactDropdownRef = useRef(null);
 
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('');
+  const [contactOpen, setContactOpen] = useState(false);
+  const [mobileContactOpen, setMobileContactOpen] = useState(false);
+
+  const contactSubItems = [
+    { label: 'Get in Touch', href: '/contact', desc: 'Direct communications & inquiries' },
+    { label: 'Careers', href: '/careers', desc: 'Join the execution team' },
+  ];
 
   const navItems = [
     { label: 'Home', href: '/' },
-    { label: 'Services', href: '/Services' },
-    { label: 'Features', href: '/Features' },
-    { label: 'Downloads', href: '/download' },
     { label: 'Merchant Stories', href: '/MerchantStories' },
     { label: 'Blogs', href: '/Blogs' },
     { label: 'About', href: '/about' },
-    { label: 'Contact Us', href: '/contact' },
+    { label: 'Downloads', href: '/download' },
+    {
+      label: 'Contact Us',
+      isDropdown: true,
+      subItems: contactSubItems,
+    },
   ];
 
   // Helper to check if item is the active route
   const isActive = (href) => {
-    if (!currentPath) return false;
+    if (!currentPath || !href) return false;
     const cleanCurrent = currentPath.toLowerCase().replace(/\/$/, '') || '/';
     const cleanHref = href.toLowerCase().replace(/\/$/, '') || '/';
 
@@ -37,32 +47,43 @@ export default function Navbar() {
     return cleanCurrent === cleanHref || cleanCurrent.startsWith(`${cleanHref}/`);
   };
 
+  const isContactActive = () => {
+    return contactSubItems.some((sub) => isActive(sub.href));
+  };
+
   // 1. Position Pill to Active Link (Default resting state)
   const positionPillToActive = () => {
     if (!linksContainerRef.current || !pillRef.current) return;
 
-    const activeItem = navItems.find((item) => isActive(item.href));
-    if (!activeItem) {
+    let activeEl = null;
+
+    if (isContactActive()) {
+      activeEl = linksRef.current['contact-dropdown'];
+    } else {
+      const activeItem = navItems.find((item) => !item.isDropdown && isActive(item.href));
+      if (activeItem) {
+        activeEl = linksRef.current[activeItem.href];
+      }
+    }
+
+    if (!activeEl) {
       gsap.to(pillRef.current, { opacity: 0, scaleX: 0.8, duration: 0.3 });
       return;
     }
 
-    const activeEl = linksRef.current[activeItem.href];
-    if (activeEl) {
-      const navBounds = linksContainerRef.current.getBoundingClientRect();
-      const linkBounds = activeEl.getBoundingClientRect();
-      const x = linkBounds.left - navBounds.left;
-      const width = linkBounds.width;
+    const navBounds = linksContainerRef.current.getBoundingClientRect();
+    const linkBounds = activeEl.getBoundingClientRect();
+    const x = linkBounds.left - navBounds.left;
+    const width = linkBounds.width;
 
-      gsap.to(pillRef.current, {
-        x,
-        width,
-        opacity: 1,
-        scaleX: 1,
-        duration: 0.4,
-        ease: 'power3.out',
-      });
-    }
+    gsap.to(pillRef.current, {
+      x,
+      width,
+      opacity: 1,
+      scaleX: 1,
+      duration: 0.4,
+      ease: 'power3.out',
+    });
   };
 
   // 2. Initial Setup, Route Listener, & Scroll Handler
@@ -73,7 +94,6 @@ export default function Navbar() {
 
     updatePath();
 
-    // Listen to standard history and Astro ClientRouter transition events
     window.addEventListener('popstate', updatePath);
     document.addEventListener('astro:page-load', updatePath);
 
@@ -124,6 +144,17 @@ export default function Navbar() {
     positionPillToActive();
   }, [currentPath]);
 
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (contactDropdownRef.current && !contactDropdownRef.current.contains(e.target)) {
+        setContactOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   // 3. Desktop Hover Handlers
   const handleMouseEnter = (e) => {
     const link = e.currentTarget;
@@ -146,7 +177,6 @@ export default function Navbar() {
   };
 
   const handleMouseLeave = () => {
-    // Snap pill back to active link instead of vanishing
     positionPillToActive();
   };
 
@@ -195,6 +225,8 @@ export default function Navbar() {
         ease: 'power2.in',
         delay: 0.1,
       });
+
+      setMobileContactOpen(false);
     }
   }, [isOpen]);
 
@@ -235,6 +267,93 @@ export default function Navbar() {
             ></div>
 
             {navItems.map((item) => {
+              if (item.isDropdown) {
+                const active = isContactActive();
+                return (
+                  <div
+                    key="contact-dropdown"
+                    ref={contactDropdownRef}
+                    className="relative"
+                    onMouseEnter={() => setContactOpen(true)}
+                    onMouseLeave={() => setContactOpen(false)}
+                  >
+                    <button
+                      type="button"
+                      ref={(el) => (linksRef.current['contact-dropdown'] = el)}
+                      onMouseEnter={handleMouseEnter}
+                      onClick={() => setContactOpen(!contactOpen)}
+                      className={`relative z-10 px-3.5 py-1.5 text-[11px] font-mono uppercase tracking-[0.18em] transition-colors duration-200 cursor-none flex items-center gap-1.5 bg-transparent border-none ${
+                        active || contactOpen
+                          ? 'text-white font-bold'
+                          : 'text-white/60 hover:text-white'
+                      }`}
+                    >
+                      {item.label}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className={`w-3 h-3 transition-transform duration-300 ${
+                          contactOpen ? 'rotate-180 text-vyapo' : 'text-white/40'
+                        }`}
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      {active && (
+                        <span className="w-1 h-1 rounded-full bg-vyapo shadow-[0_0_6px_#F59E0B]"></span>
+                      )}
+                    </button>
+
+                    {/* Desktop Submenu Popover */}
+                    <div
+                      className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 w-56 transition-all duration-200 ${
+                        contactOpen
+                          ? 'opacity-100 pointer-events-auto translate-y-0'
+                          : 'opacity-0 pointer-events-none -translate-y-2'
+                      }`}
+                    >
+                      <div className="rounded-2xl bg-[#0a0a0a]/95 border border-white/10 backdrop-blur-2xl p-2 shadow-[0_15px_40px_rgba(0,0,0,0.9)] space-y-1">
+                        {item.subItems.map((sub) => {
+                          const subActive = isActive(sub.href);
+                          return (
+                            <a
+                              key={sub.href}
+                              href={sub.href}
+                              onClick={() => setContactOpen(false)}
+                              className={`block p-2.5 rounded-xl transition-all duration-200 cursor-none ${
+                                subActive
+                                  ? 'bg-vyapo/15 border border-vyapo/30'
+                                  : 'hover:bg-white/[0.04] border border-transparent'
+                              }`}
+                            >
+                              <div className="flex items-center justify-between">
+                                <span
+                                  className={`text-xs font-mono uppercase tracking-wider font-bold ${
+                                    subActive ? 'text-vyapo' : 'text-white group-hover:text-vyapo'
+                                  }`}
+                                >
+                                  {sub.label}
+                                </span>
+                                {subActive && (
+                                  <span className="w-1.5 h-1.5 rounded-full bg-vyapo animate-pulse"></span>
+                                )}
+                              </div>
+                              <p className="text-[10px] text-white/40 font-light mt-0.5 leading-tight">
+                                {sub.desc}
+                              </p>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
               const active = isActive(item.href);
               return (
                 <a
@@ -243,9 +362,7 @@ export default function Navbar() {
                   href={item.href}
                   onMouseEnter={handleMouseEnter}
                   className={`relative z-10 px-3.5 py-1.5 text-[11px] font-mono uppercase tracking-[0.18em] transition-colors duration-200 cursor-none flex items-center gap-1.5 ${
-                    active
-                      ? 'text-white font-bold'
-                      : 'text-white/60 hover:text-white'
+                    active ? 'text-white font-bold' : 'text-white/60 hover:text-white'
                   }`}
                 >
                   {item.label}
@@ -299,6 +416,86 @@ export default function Navbar() {
 
         <div className="w-full max-w-sm mx-auto space-y-1">
           {navItems.map((item, idx) => {
+            if (item.isDropdown) {
+              const active = isContactActive();
+              return (
+                <div
+                  key="mobile-contact"
+                  ref={(el) => (mobileRowsRef.current[idx] = el)}
+                  className={`border-b transition-colors ${
+                    active ? 'border-vyapo/30 bg-white/[0.02] px-2 rounded-lg' : 'border-white/5'
+                  }`}
+                >
+                  {/* Non-routing toggle button */}
+                  <button
+                    type="button"
+                    onClick={() => setMobileContactOpen(!mobileContactOpen)}
+                    className="w-full py-3 flex items-center justify-between group cursor-none bg-transparent border-none text-left"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={`font-mono text-xs ${
+                          active ? 'text-vyapo' : 'text-vyapo/50 group-hover:text-vyapo'
+                        }`}
+                      >
+                        0{idx + 1}
+                      </span>
+                      <span
+                        className={`text-xl sm:text-2xl font-bold uppercase tracking-tight transition-colors ${
+                          active || mobileContactOpen ? 'text-vyapo' : 'text-white'
+                        }`}
+                      >
+                        {item.label}
+                      </span>
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        mobileContactOpen ? 'rotate-180 text-vyapo' : 'text-white/40'
+                      }`}
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Expandable Mobile Accordion Options */}
+                  {mobileContactOpen && (
+                    <div className="pl-8 pr-2 pb-3 pt-1 space-y-2 border-t border-white/5 mt-1">
+                      {item.subItems.map((sub) => {
+                        const subActive = isActive(sub.href);
+                        return (
+                          <a
+                            key={sub.href}
+                            href={sub.href}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setMobileContactOpen(false);
+                            }}
+                            className={`flex items-center justify-between p-2 rounded-lg transition-colors cursor-none ${
+                              subActive ? 'bg-vyapo/10 text-vyapo' : 'text-white/70 hover:text-white'
+                            }`}
+                          >
+                            <span className="text-base font-semibold uppercase tracking-tight font-mono">
+                              {sub.label}
+                            </span>
+                            <span className="font-mono text-xs text-vyapo">
+                              {subActive ? '●' : '→'}
+                            </span>
+                          </a>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             const active = isActive(item.href);
             return (
               <div
