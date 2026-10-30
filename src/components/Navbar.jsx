@@ -26,7 +26,7 @@ export default function Navbar() {
     { label: 'Home', href: '/' },
     { label: 'Merchant Stories', href: '/MerchantStories' },
     { label: 'Blogs', href: '/Blogs' },
-    { label: 'About', href: '/about' },
+    { label: 'About Us', href: '/about' },
     { label: 'Downloads', href: '/download' },
     {
       label: 'Contact Us',
