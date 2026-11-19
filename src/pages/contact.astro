@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import MagneticButton from '../components/MagneticButton.jsx';
 
-const googleMapUrl = "https://www.google.com/maps/place/PrimaThink/@20.9625999,77.7764722,17z/data=!3m1!4b1!4m6!3m5!1s0x3bd6a30bc0000071:0x25ccfdcd93fb580b!8m2!3d20.9625949!4d77.7790471!16s%2Fg%2F11ckq_07yb";
+const googleMapUrl = "https://www.google.com/maps/place/Vishwalata+Ventures+Private+Limited/@21.2974657,77.5136822,17z/data=!3m1!4b1!4m6!3m5!1s0x3bd6f54e05ac932f:0xad5e62bd57d43837!8m2!3d21.2974657!4d77.5162571!16s%2Fg%2F11s0vjr22j?entry=ttu&g_ep=EgoyMDI2MTExNi4wIKXMDSoASAFQAw%3D%3D";
 
 const socials = [
    {
@@ -41,7 +41,6 @@ const socials = [
     handle: '+91 98902 29131',
     icon: `<path fill="#25D366" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.35.06-.53.26-.18.2-.7 1.28-.7 1.7 0 .42.18.9.36 1.1.18.2 1.35 2.19 3.37 3.01 1.68.68 2.02.55 2.38.51.36-.04 1.17-.48 1.33-.94.16-.46.16-.86.11-.94-.05-.08-.18-.13-.38-.23s-1.17-.58-1.35-.65c-.18-.07-.31-.11-.44.11-.13.22-.51.65-.63.78-.12.13-.24.15-.44.05-.2-.1-1.04-.38-1.98-1.22-.73-.65-1.22-1.46-1.36-1.7-.14-.24-.01-.37.09-.47.09-.09.2-.24.3-.36.1-.12.13-.2.2-.34.07-.14.03-.26-.02-.36s-.44-1.06-.6-1.46c-.16-.39-.32-.34-.44-.35-.11-.01-.24-.01-.37-.01z"/>`
   }
-  
 ];
 ---
 
@@ -139,6 +138,8 @@ const socials = [
                   <label class="block text-xs font-mono uppercase tracking-widest text-white/60 mb-2">Full Name</label>
                   <input 
                     type="text" 
+                    id="form-name"
+                    name="name"
                     required 
                     placeholder="e.g. Ramesh Patel" 
                     class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-vyapo transition-colors placeholder:text-white/20 cursor-none"
@@ -149,6 +150,8 @@ const socials = [
                   <label class="block text-xs font-mono uppercase tracking-widest text-white/60 mb-2">WhatsApp / Phone</label>
                   <input 
                     type="tel" 
+                    id="form-phone"
+                    name="phone"
                     required 
                     placeholder="+91 98902 29131" 
                     class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-vyapo transition-colors placeholder:text-white/20 cursor-none"
@@ -162,6 +165,8 @@ const socials = [
                   <label class="block text-xs font-mono uppercase tracking-widest text-white/60 mb-2">Firm / Business Name</label>
                   <input 
                     type="text" 
+                    id="form-business"
+                    name="business"
                     required 
                     placeholder="e.g. Patel Agro & Seeds" 
                     class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-vyapo transition-colors placeholder:text-white/20 cursor-none"
@@ -171,12 +176,14 @@ const socials = [
                 <div class="form-group relative">
                   <label class="block text-xs font-mono uppercase tracking-widest text-white/60 mb-2">Ecosystem Role</label>
                   <select 
+                    id="form-role"
+                    name="role"
                     class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-vyapo transition-colors appearance-none cursor-none"
                   >
-                    <option value="retailer" class="bg-[#0a0a0a] text-white">Local Retailer / Storefront</option>
-                    <option value="wholesaler" class="bg-[#0a0a0a] text-white">Wholesaler / Regional Stockist</option>
-                    <option value="distributor" class="bg-[#0a0a0a] text-white">Exclusive Area Distributor</option>
-                    <option value="manufacturer" class="bg-[#0a0a0a] text-white">Brand / Factory Manufacturer</option>
+                    <option value="Local Retailer / Storefront" class="bg-[#0a0a0a] text-white">Local Retailer / Storefront</option>
+                    <option value="Wholesaler / Regional Stockist" class="bg-[#0a0a0a] text-white">Wholesaler / Regional Stockist</option>
+                    <option value="Exclusive Area Distributor" class="bg-[#0a0a0a] text-white">Exclusive Area Distributor</option>
+                    <option value="Brand / Factory Manufacturer" class="bg-[#0a0a0a] text-white">Brand / Factory Manufacturer</option>
                   </select>
                 </div>
               </div>
@@ -185,6 +192,8 @@ const socials = [
               <div class="form-group relative">
                 <label class="block text-xs font-mono uppercase tracking-widest text-white/60 mb-2">Requirements / Message</label>
                 <textarea 
+                  id="form-message"
+                  name="message"
                   rows="4" 
                   placeholder="Tell us about your distribution volume or inventory inquiry..." 
                   class="w-full bg-black/40 border border-white/15 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-vyapo transition-colors placeholder:text-white/20 resize-none cursor-none"
@@ -202,7 +211,7 @@ const socials = [
               </button>
 
               <div id="form-feedback" class="hidden text-center text-xs font-mono text-vyapo pt-2">
-                ✓ Inquiry dispatched. An integration engineer will contact you shortly.
+                ✓ Redirecting to WhatsApp...
               </div>
 
             </form>
@@ -291,9 +300,9 @@ const socials = [
               <span class="w-1.5 h-1.5 rounded-full bg-vyapo animate-ping"></span>
               Live Node Center
             </div>
-            <h4 class="text-sm font-bold text-white uppercase">PrimaThink // Vyapo Operations</h4>
+            <h4 class="text-sm font-bold text-white uppercase"> Vishwalata Ventures Private Limited </h4>
             <p class="text-white/50 text-xs mt-1 font-light leading-relaxed">
-              Badnera Road, Near Rajapeth, Amravati, Maharashtra 444601.
+              Shop No. 20, G.M. Arcade, Opposite City Council, Main Road, Paratwada – 444805
             </p>
           </div>
 
@@ -363,7 +372,7 @@ const socials = [
       }
     );
 
-    // 5. Form Submit Handler
+    // 5. Form Submit Handler -> Redirects to WhatsApp +91 98902 29131
     const form = document.getElementById('contact-form');
     const feedback = document.getElementById('form-feedback');
     const btn = document.getElementById('submit-btn');
@@ -371,15 +380,31 @@ const socials = [
     if (form instanceof HTMLFormElement && feedback && btn) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        btn.textContent = 'Transmitting...';
+
+        const name = (document.getElementById('form-name') as HTMLInputElement)?.value.trim() || '';
+        const phone = (document.getElementById('form-phone') as HTMLInputElement)?.value.trim() || '';
+        const business = (document.getElementById('form-business') as HTMLInputElement)?.value.trim() || '';
+        const role = (document.getElementById('form-role') as HTMLSelectElement)?.value.trim() || '';
+        const message = (document.getElementById('form-message') as HTMLTextAreaElement)?.value.trim() || '';
+
+        const whatsappMessage = `*New Merchant Inquiry - Vyapo*\n\n` +
+          `*Name:* ${name}\n` +
+          `*Phone:* ${phone}\n` +
+          `*Business Name:* ${business}\n` +
+          `*Role:* ${role}\n` +
+          `*Requirements / Message:* ${message || 'N/A'}`;
+
+        btn.textContent = 'Opening WhatsApp...';
         btn.style.opacity = '0.7';
+
+        const targetUrl = `https://wa.me/919890229131?text=${encodeURIComponent(whatsappMessage)}`;
 
         setTimeout(() => {
           btn.style.display = 'none';
           feedback.classList.remove('hidden');
-          gsap.fromTo(feedback, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 });
-          form.reset();
-        }, 800);
+          gsap.fromTo(feedback, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 });
+          window.open(targetUrl, '_blank');
+        }, 500);
       });
     }
 
